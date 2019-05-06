@@ -26,3 +26,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+[![Codeship Status for sromelus/tax_tracker](https://app.codeship.com/projects/42548430-519e-0137-a957-1698be22a756/status?branch=master)](https://app.codeship.com/projects/340131)
