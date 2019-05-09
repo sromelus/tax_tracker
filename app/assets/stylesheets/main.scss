@@ -1,0 +1,16 @@
+body {
+  background: green;
+  .app-header {
+    background: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .app-screen {
+      // this applies to everything with the classname app-screen
+      &.trips-list {
+        // this applies to everything with the classname app-screen AND trips-list
+      }
+    }
+  }
+}

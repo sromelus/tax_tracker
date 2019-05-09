@@ -1,6 +1,5 @@
 class Api::V1::TripsController < ApplicationController
-
-def index
+  def index
     if current_user
       render json: {
         current_user: current_user,
