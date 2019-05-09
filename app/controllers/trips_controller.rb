@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class TripsController < ApplicationController
 
     def index
       @user = current_user
