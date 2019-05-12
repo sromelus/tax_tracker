@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import AppRouter from '../react/AppRouter'
+import AppRouter from '../react/components/AppRouter'
 import RedBox from 'redbox-react'
 
 document.addEventListener('DOMContentLoaded', () => {
