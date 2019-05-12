@@ -13,5 +13,90 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
+
+ body {
+   background-color: #eeffff;
+ }
+
+ .hidden {
+   display: none;
+ }
+
+ .show {
+   display: block;
+ }
+
+
+ .logo {
+  max-height: 50px;
+  margin-left: 2.0rem;
+  margin-top: 1.5rem;
+ }
+
+
+.signup {
+  position: absolute;
+  width: 84px;
+  height: 29px;
+  left: 1120px;
+  top: 28px;
+  font-family: "calibri", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #000000;
+}
+
+.signin{
+  position: absolute;
+  width: 80px;
+  height: 28px;
+  left: 1220px;
+  top: 28px;
+  font-family: "calibri", sans-serif ;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #000000;
+}
+
+.signinbox {
+  background: #5de;
+  border-radius: 8px;
+  padding-left: 40px;
+}
+
+.signupbox {
+  background: #5de;
+  border-radius: 8px;
+  padding-left: 9px
+}
+
+.largeBox{
+  position: absolute;
+  width: 657px;
+  height: 598px;
+  left: 210px;
+  top: 138px;
+
+  background: url(Screen-Shot-2016-02-14-at-4.39.png);
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 4px 4px #000000;
+}
+
+.introtxt {
+  position: absolute;
+  width: 416.82px;
+  height: 496.22px;
+  left: 210px;
+  top: 138px;
+
+  background: #C4C4C4;
+  mix-blend-mode: exclusion;
+  opacity: 0.5;
+}
