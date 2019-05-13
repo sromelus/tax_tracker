@@ -86,23 +86,30 @@ export default class Dashboard extends Component {
     )
   })
 
-    return(
-      <div>
-        <h3>Welcome {this.state.user}</h3>
-        <div>
-          <p>Estimated Taxes Owed:</p>
-          <p>Estimated Earnings: ${`${earning}`}</p>
-          <p>Estimated Miles Driven: {`${miles}`} miles</p>
-        </div>
+  let taxRate = 0.22;
+  let mileageRate = 0.58;
+  let estimatedTaxableEarning = earning-(miles*mileageRate);
+  let estimatedTaxableOwed = estimatedTaxableEarning * taxRate;
 
-        <div onClick={this.handleClick}>
-           Add New Trip
-        </div>
-        <div>
-          {trips}
-        </div>
-        <div className={`${this.state.formToggle}`}>
-          <NewTripForm addNewTrip={this.addNewTrip}/>
+    return(
+      <div className="row">
+        <div className="small-8 small-centered columns">
+          <h3>Welcome {this.state.user}</h3>
+          <div>
+            <p>Estimated Taxes Owed: ${`${estimatedTaxableOwed.toFixed(2)}`} </p>
+            <p>Estimated Earnings: ${`${earning.toFixed(2)}`}</p>
+            <p>Estimated Miles Driven: {`${miles}`} miles</p>
+          </div>
+
+          <div onClick={this.handleClick}>
+             Add New Trip
+          </div>
+          <div>
+            {trips}
+          </div>
+          <div className={`${this.state.formToggle}`}>
+            <NewTripForm addNewTrip={this.addNewTrip}/>
+          </div>
         </div>
       </div>
     )

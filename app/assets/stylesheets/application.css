@@ -38,9 +38,9 @@
 .signup {
   position: absolute;
   width: 84px;
-  height: 29px;
+  height: 30px;
   left: 1120px;
-  top: 28px;
+  top: 25px;
   font-family: "calibri", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -53,9 +53,9 @@
 .signin{
   position: absolute;
   width: 80px;
-  height: 28px;
-  left: 1220px;
-  top: 28px;
+  height: 30px;
+  left: 1215px;
+  top: 25px;
   font-family: "calibri", sans-serif ;
   font-style: normal;
   font-weight: normal;
@@ -68,7 +68,13 @@
 .signinbox {
   background: #5de;
   border-radius: 8px;
-  padding-left: 40px;
+  padding-left: 10px;
+}
+
+.signoutbox {
+  background: #5de;
+  border-radius: 8px;
+  padding-left: 3px
 }
 
 .signupbox {
