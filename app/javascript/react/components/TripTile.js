@@ -10,10 +10,11 @@ const TripTile = (props) => {
 
   return(
     <div>
+
       <div>
         <div>
-             <p>trip: Miles: {props.miles} | Earning: ${props.netEarning} | Date: {`${month+1}-${day}-${year}`} | Time: {time}</p>
-          </div>
+          <p>trip: Miles: {props.miles} | Earning: ${props.netEarning} | Date: {`${month+1}-${day}-${year}`} | Time: {time}</p>
+        </div>
       </div>
     </div>
   )

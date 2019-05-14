@@ -43,12 +43,14 @@ class NewTripForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label> Miles:
+          <span>
             <input
               type="text"
               name="miles"
               value={this.state.miles}
               onChange={this.handleMilesChange}
             />
+          </span>
           </label>
           <label> Net Earning:
             <input
