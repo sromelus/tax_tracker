@@ -14,6 +14,7 @@
  *= require_self
  *= require foundation_and_overrides
  */
+ .item1 { grid-area: header; }
 
  body {
    background-color: #eeffff;
@@ -31,72 +32,101 @@
  .logo {
   max-height: 50px;
   margin-left: 2.0rem;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
  }
 
+ .button {
+  background-color: #5de;
+  border: none;
+  color: #000;
+  padding: 15px 32px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.grid-container-home-page {
+  display: grid;
+  grid-template-columns:  auto auto auto auto;
+  margin-top: 10rem;
+  margin-left: 15rem;
+}
+ .grid-container {
+   display: grid;
+   grid-template-columns: auto auto auto;
+   padding: 10px;
+ }
+ .grid-logo {
+   padding: 20px;
+   font-size: 30px;
+   text-align: left;
+ }
+ .grid-space {
+   padding: 20px;
+   font-size: 30px;
+   text-align: left;
+ }
+ .grid-sign {
+   padding: 20px;
+   font-size: 30px;
+   text-align: right;
+ }
 
-.signup {
-  position: absolute;
-  width: 84px;
-  height: 29px;
-  left: 1120px;
-  top: 28px;
-  font-family: "calibri", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 29px;
-  letter-spacing: 0.05em;
-  color: #000000;
+ .grid-space-show-page {
+   padding: 20px;
+   font-size: 30px;
+   text-align: right;
+ }
+ .grid-table-show-page {
+   padding: 20px;
+   font-size: 30px;
+   text-align: right;
+ }
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.signin{
-  position: absolute;
-  width: 80px;
-  height: 28px;
-  left: 1220px;
-  top: 28px;
-  font-family: "calibri", sans-serif ;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 29px;
-  letter-spacing: 0.05em;
-  color: #000000;
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-.signinbox {
-  background: #5de;
-  border-radius: 8px;
-  padding-left: 40px;
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
 
-.signupbox {
-  background: #5de;
-  border-radius: 8px;
-  padding-left: 9px
+.grid-container-table {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+
 }
 
-.largeBox{
-  position: absolute;
-  width: 657px;
-  height: 598px;
+.grid-container-table > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.home-picture {
+  width: 40rem;
+  height: 35rem;
   left: 210px;
   top: 138px;
-
-  background: url(Screen-Shot-2016-02-14-at-4.39.png);
-  border: 1px solid #FFFFFF;
-  box-shadow: 0px 4px 4px #000000;
-}
-
-.introtxt {
-  position: absolute;
-  width: 416.82px;
-  height: 496.22px;
-  left: 210px;
-  top: 138px;
-
-  background: #C4C4C4;
-  mix-blend-mode: exclusion;
-  opacity: 0.5;
 }

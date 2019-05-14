@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import TripTile from './TripTile'
-import NewTripForm from './NewTripForm'
+import React, { Component } from 'react';
+import TripTile from './TripTile';
+import NewTripForm from './NewTripForm';
+
 
 export default class Dashboard extends Component {
  constructor(props){
@@ -36,9 +37,15 @@ export default class Dashboard extends Component {
  }
 
  handleClick(){
-   this.setState({
-     formToggle: "show"
-   })
+   if (this.state.formToggle === "hidden") {
+     this.setState({
+       formToggle: "show"
+     })
+   } else {
+     this.setState({
+       formToggle: "hidden"
+     })
+   }
  }
 
  addNewTrip(tripPayLoad) {
@@ -86,25 +93,56 @@ export default class Dashboard extends Component {
     )
   })
 
+
+  let taxRate = 0.22;
+  let mileageRate = 0.58;
+  let estimatedTaxableEarning = earning-(miles*mileageRate);
+  let estimatedTaxableOwed = estimatedTaxableEarning * taxRate;
+
     return(
       <div>
-        <h3>Welcome {this.state.user}</h3>
-        <div>
-          <p>Estimated Taxes Owed:</p>
-          <p>Estimated Earnings: ${`${earning}`}</p>
-          <p>Estimated Miles Driven: {`${miles}`} miles</p>
+      <div className="grid-container">
+        <div className="grid-logo">
+        <h2>Welcome {this.state.user}</h2>
+        </div>
+        <div className="grid-table-show-page"></div>
+      </div>
+
+      <div className="grid-container">
+        <div className="grid-logo">
+          <div>
+            <h5>Estimated Taxes Owed: &nbsp;&nbsp;&nbsp; ${`${estimatedTaxableOwed.toFixed(2)}`} </h5>
+            <h5>Estimated Earnings: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${`${earning.toFixed(2)}`}</h5>
+            <h5>Estimated Miles Driven: &nbsp;&nbsp;&nbsp;&nbsp;{`${miles}`} miles</h5>
+          </div>
         </div>
 
-        <div onClick={this.handleClick}>
-           Add New Trip
+        <div className="grid-table-show-page">
+           <h4>Trip History</h4>
+          <div>
+            {trips}
+          </div>
+          <div onClick={this.handleClick}>
+            <a><p>Add New Trip</p></a>
+          </div>
+          <div className={`${this.state.formToggle}`}>
+            <NewTripForm
+             addNewTrip={this.addNewTrip}
+            />
+         </div>
         </div>
-        <div>
-          {trips}
-        </div>
-        <div className={`${this.state.formToggle}`}>
-          <NewTripForm addNewTrip={this.addNewTrip}/>
-        </div>
+      </div>
       </div>
     )
   }
 }
+
+<div className="grid-container">
+  <div className="grid-logo">
+
+  </div>
+  <div className="grid-space"></div>
+  <div className="grid-sign">
+
+  </div>
+</div>
