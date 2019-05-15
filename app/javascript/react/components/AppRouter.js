@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import NewTripForm from './NewTripForm'
-import Dashboard from './Dashboard'
+import NewTripForm from './NewTripForm';
+import Dashboard from './Dashboard';
 
 const AppRouter = () => {
   return (
