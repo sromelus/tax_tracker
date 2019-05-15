@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TripTile from './TripTile';
 import NewTripForm from './NewTripForm';
+import ReactTable from 'react-table'
 
 
 export default class Dashboard extends Component {
@@ -93,6 +94,23 @@ export default class Dashboard extends Component {
     )
   })
 
+  const columns = [{
+   Header: 'Date',
+   accessor: 'created_at'
+  },
+  {
+   Header: 'Time',
+   accessor: 'created_at'
+  },
+  {
+   Header: 'Earnings',
+   accessor: 'net_earning',
+  },
+  {
+   Header: 'Miles',
+   accessor: 'miles'
+  }]
+
 
   let taxRate = 0.22;
   let mileageRate = 0.58;
@@ -120,7 +138,11 @@ export default class Dashboard extends Component {
         <div className="grid-table-show-page">
            <h4>Trip History</h4>
           <div>
-            {trips}
+          <ReactTable
+            columns={columns}
+            data={this.state.trips}
+            defaultPageSize={6}
+          />
           </div>
           <div onClick={this.handleClick}>
             <a><p>Add New Trip</p></a>
@@ -136,13 +158,3 @@ export default class Dashboard extends Component {
     )
   }
 }
-
-<div className="grid-container">
-  <div className="grid-logo">
-
-  </div>
-  <div className="grid-space"></div>
-  <div className="grid-sign">
-
-  </div>
-</div>
