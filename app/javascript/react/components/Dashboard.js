@@ -77,29 +77,33 @@ export default class Dashboard extends Component {
  }
 
  render(){
-   
+
   let miles = 0;
   let earning = 0;
   let trips = this.state.trips.forEach((trip) => {
       miles += trip.miles
       earning += trip.net_earning
   })
-
+  
   const columns = [{
    Header: 'Date',
-   accessor: 'created_at'
+   accessor: 'date',
+   defaultSortDesc: true
   },
   {
    Header: 'Time',
-   accessor: 'created_at'
+   accessor: 'time',
+   sortable: false
   },
   {
    Header: 'Earnings',
    accessor: 'net_earning',
+   sortable: false
   },
   {
    Header: 'Miles',
-   accessor: 'miles'
+   accessor: 'miles',
+   sortable: false
   }]
 
 
