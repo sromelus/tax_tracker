@@ -11,29 +11,32 @@
 </head>
 <body>
 
-  <div class="grid-container">
-    <div class="grid-logo">
+  <ul class="top-nav">
+    <li>
       <a href="/">
-        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/TaxTrackerlogo.png', class:"logo" %>
+        <%= image_tag'/assets/TaxTrackerlogo.png', class:"anchor" %>
       </a>
-    </div>
-    <div class="grid-space"></div>
-    <div class="grid-sign">
-      <%- if current_user -%>
-      <span>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"button" %>
-      </span>
-      <%- else -%>
-      <span>
-        <%= link_to 'Sign Up', new_user_registration_path, class:"button" %>
-      </span>
-      <span>
-        <%= link_to 'Sign In', new_user_session_path, class:"button" %>
-      </span>
-      <%- end -%>
-    </div>
-  </div>
+    </li>
 
+    <%- if current_user -%>
+    <li class="right">
+    <a>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"button" %>
+    </a>
+    </li>
+    <%- else -%>
+    <li class="right">
+      <a>
+      <%= link_to 'Sign Up', new_user_registration_path, class:"button" %>
+      </a>
+    </li>
+    <li class="right">
+      <a>
+      <%= link_to 'Sign In', new_user_session_path, class:"button" %>
+      </a>
+    </li>
+    <%- end -%>
+  </ul>
 
 
   <%- flash.each do |key, value| -%>
@@ -42,8 +45,7 @@
     </div>
   <%- end -%>
 
-      <%= yield %>
-
+  <%= yield %>
 
   <%= javascript_include_tag 'application' %>
 
@@ -55,5 +57,11 @@
   <%= javascript_pack_tag 'application' %>
 
   <%= yield :extra_footer %>
+
+  <div class="footer">
+    <p><a href="#"><strong>About Us<strong></a></p>
+    <p><a href="#"><strong>Contact<strong></a></p>
+  </div>
+
 </body>
 </html>

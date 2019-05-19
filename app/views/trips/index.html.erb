@@ -1,21 +1,34 @@
 <% if @user %>
+<div class="footer">
+  <p><a href="#"><strong>About Us<strong></a></p>
+    <p><a href="#"><strong>Contact<strong></a></p>
+    </div>
   <div id="app" />
 <% else %>
 
-<div class="grid-container-home-page">
-  <div class="grid-item"></div>
-  <div class="grid-item">
-    <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/HomePage-image.png', class:"home-picture" %>
+
+<div class="home-page-body">
+  <div class="small-ellipse">
   </div>
-  <div class="grid-item">
-  	<div class="">
-      <!-- <h3>John Smith</h3>
-      <h4>Estimated Tax Owed: $6.00</h4>
-      <h4>Estimated Earnings: $300.00</h4>
-      <h4>Estimated Miles Driven: 95</h4> -->
-    </div>
+  <div class="large-ellipse">
   </div>
-  <div class="grid-item"></div>
+  <div class="img-home">
+    <%= image_tag '/assets/humphrey-muleba-1105960-unsplash.png'%>
+  </div>
+  <div class="home-text">
+    <h1>
+      Track your mileages,
+      <br>earnings and taxes.</br>
+      The right way
+      <h4>Keep calm and drive on</h4>
+    </h1>
+  </div>
+  <div class="signup-home-button">
+    <a>
+    <%= link_to 'Sign Up', new_user_registration_path, class:"button" %>
+    </a>
+    <p style="width: 600px;">Already have an account? <%= link_to 'Log In', new_user_session_path %></p>
+  </div>
 </div>
 
 <% end %>
