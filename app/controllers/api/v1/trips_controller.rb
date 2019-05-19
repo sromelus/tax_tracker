@@ -20,10 +20,10 @@ class Api::V1::TripsController < ApplicationController
      @trip = Trip.new(miles: trip_params['miles'], net_earning: trip_params['net_earning'], user_id: current_user.id)
 
      if @trip.save
-       render json: { current_user: current_user, trips: current_user.trips, errors: "" }
+       render json: { current_user: current_user, trips: serializer_trips, errors: "" }
      else
        @errors = @trip.errors.full_messages.join
-       render json: { current_user: current_user, trips: current_user.trips, errors: @errors }
+       render json: { current_user: current_user, trips: serializer_trips, errors: @errors }
      end
    end
 

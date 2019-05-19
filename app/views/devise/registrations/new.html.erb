@@ -1,4 +1,4 @@
-<div class="grid-container">
+<!-- <div class="grid-container">
   <div class="grid-item"></div>
   <div class="grid-item">
 
@@ -47,5 +47,58 @@
 
     <%= render "devise/shared/links" %>
   </div>
+  <div class="grid-item"></div>
+</div> -->
+
+
+<div class="grid-container">
+  <div class="grid-item"></div>
+  <div class="grid-item signin-text item-vertical-pos-signin-page">
+    Take action now
+    <br>Enjoy free tax tracking
+  </div>
+  <div class="grid-item signup-box-form">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+         <%= f.label :email, :class => 'text-label' %>
+         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, :class => 'text-label-password' %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, :class => 'text-label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :first_name, :class => 'text-label' %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "Firstname" %>
+      </div>
+
+      <div class="field field-right">
+        <%= f.label :last_name, :class => 'text-label' %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "Lastname" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip_code, :class => 'text-label' %>
+        <%= f.text_field :zip_code, autofocus: true, autocomplete: "Zipcode" %>
+      </div>
+
+      <div class="field actions button-in-page">
+        <%= f.submit 'Sign up', :class => 'button small' %>
+      </div>
+
+    <% end %>
+
   <div class="grid-item"></div>
 </div>

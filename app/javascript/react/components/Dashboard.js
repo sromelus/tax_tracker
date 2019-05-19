@@ -84,7 +84,7 @@ export default class Dashboard extends Component {
       miles += trip.miles
       earning += trip.net_earning
   })
-  
+
   const columns = [{
    Header: 'Date',
    accessor: 'date',
