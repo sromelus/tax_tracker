@@ -87,6 +87,8 @@ GEM
     faker (1.9.3)
       i18n (>= 0.7)
     ffi (1.10.0)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     foundation-rails (5.5.3.2)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
@@ -242,6 +244,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot
   faker
+  font-awesome-rails
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)
   jquery-rails
