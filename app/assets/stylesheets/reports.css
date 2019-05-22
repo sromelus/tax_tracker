@@ -1,0 +1,13 @@
+.grid-container-reports {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 20px;
+  grid-gap: 10%;
+  margin-top: 3%;
+}
+.grid-item-reports {
+  background-color: #2F3038;
+  padding: 5px;
+  margin-bottom: 20%;
+  color: #FFF;
+}

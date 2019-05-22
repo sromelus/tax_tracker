@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewTripForm from './NewTripForm';
-import ReactTable from 'react-table'
+import ReactTable from 'react-table';
+import { Link } from 'react-router';
 
 
 export default class Dashboard extends Component {
@@ -9,10 +10,13 @@ export default class Dashboard extends Component {
    this.state = {
      user: '',
      trips: [],
-     formToggle: "hidden"
+     formToggle: "hidden",
+     reportsToggle: "hidden",
+     toggle: "▼"
    }
    this.addNewTrip = this.addNewTrip.bind(this)
-   this.handleClick = this.handleClick.bind(this)
+   this.handleShowForm = this.handleShowForm.bind(this)
+   this.handleShowReport = this.handleShowReport.bind(this)
  }
 
  componentDidMount(){
@@ -36,10 +40,11 @@ export default class Dashboard extends Component {
    .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
- handleClick(){
+ handleShowForm(){
    if (this.state.formToggle === "hidden") {
      this.setState({
        formToggle: "show"
+
      })
    } else {
      this.setState({
@@ -47,6 +52,21 @@ export default class Dashboard extends Component {
      })
    }
  }
+
+ handleShowReport(){
+   if (this.state.reportsToggle === "hidden") {
+     this.setState({
+       reportsToggle: "show",
+       toggle: "▲"
+     })
+   } else {
+     this.setState({
+       reportsToggle: "hidden",
+       toggle: "▼"
+     })
+   }
+ }
+
 
  addNewTrip(tripPayLoad) {
   fetch("/api/v1/trips",{
@@ -114,41 +134,43 @@ export default class Dashboard extends Component {
 
     return(
       <div>
-      <div className="grid-container">
-        <div className="grid-logo">
-        <h2>Welcome {this.state.user}</h2>
-        </div>
-        <div className="grid-table-show-page"></div>
-      </div>
+        <div className="grid-container-dashboard">
 
-      <div className="grid-container">
-        <div className="grid-logo">
-          <div>
-            <h5>Estimated Taxes Owed: &nbsp;&nbsp;&nbsp; ${`${estimatedTaxableOwed.toFixed(2)}`} </h5>
-            <h5>Estimated Earnings: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${`${earning.toFixed(2)}`}</h5>
-            <h5>Estimated Miles Driven: &nbsp;&nbsp;&nbsp;&nbsp;{`${miles}`} miles</h5>
+          <div className="grid-item-dashboard">
+            <h2>Welcome {this.state.user}</h2><br/><br/>
+            <div>
+              <h5>Estimated Taxes Owed: &nbsp;&nbsp;&nbsp; ${`${estimatedTaxableOwed.toFixed(2)}`} </h5>
+              <h5>Estimated Earnings: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${`${earning.toFixed(2)}`}</h5>
+              <h5>Estimated Miles Driven: &nbsp;&nbsp;&nbsp;&nbsp;{`${miles}`} miles</h5><br/><br/><br/>
+              <div onClick={this.handleShowReport} ><a><h5>Reports {this.state.toggle}</h5></a>
+              </div>
+              <div className={`${this.state.reportsToggle}`}>
+                <h5><Link to='/trips/reports/byweeks'>Weeks</Link></h5>
+                <h5><Link to='/trips/reports/bymonths'>Months</Link></h5>
+                <h5><Link to='/trips/reports/byyears'>Years</Link></h5>
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="grid-item-dashboard-table">
+            <h4>Trip History</h4>
 
-        <div className="grid-table-show-page">
-           <h4>Trip History</h4>
-          <div>
-          <ReactTable
-            columns={columns}
-            data={this.state.trips}
-            defaultPageSize={6}
-          />
+            <ReactTable
+                columns={columns}
+                data={this.state.trips}
+                defaultPageSize={6}
+              />
+
+            <div onClick={this.handleShowForm}>
+              <a><p>Add New Trip</p></a>
+            </div>
+            <div className={`${this.state.formToggle}`}>
+              <NewTripForm
+              addNewTrip={this.addNewTrip}
+              />
+            </div>
+
           </div>
-          <div onClick={this.handleClick}>
-            <a><p>Add New Trip</p></a>
-          </div>
-          <div className={`${this.state.formToggle}`}>
-            <NewTripForm
-             addNewTrip={this.addNewTrip}
-            />
-         </div>
         </div>
-      </div>
       </div>
     )
   }

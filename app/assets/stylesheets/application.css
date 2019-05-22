@@ -60,8 +60,7 @@
 
  .img-home {
   position: absolute;
-  width: 351px;
-  height: 557px;
+  width: 35%;
   left: 10%;
   top: 12%;
   box-shadow: 10px rgba(0, 0, 0, 0.75);
@@ -86,11 +85,10 @@
    color: #fff;
  }
 .home-page-body {
-  position: absolute;
+  position: relative;
   width: 70%;
-  height: 70%;
-  left: 206px;
-  top: 59px;
+  height: 65%;
+  margin: auto;
 }
 
 .small-ellipse {
@@ -105,8 +103,8 @@
   position: absolute;
   width: 700px;
   height: 700px;
-  left: 330px;
-  top: -40px;
+  left: 30%;
+  top: -4%;
   background: rgba(94, 164, 210, 0.15);
   border-radius: 50%;
 }
@@ -118,7 +116,7 @@
   font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
-  line-height: 78px;
+  line-height: 170%;
   color: #FCF3F3;
 }
 
@@ -200,23 +198,17 @@
   text-align: left;
   font-size: 20px;
 }
-.hidden{
-  display: none;
+
+.grid-item-welcome {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  height: 160px;
 }
-.show{
-  display: block;
+.grid-container-welcome {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
-
-
-
- /* list-style-type: none;
- margin: 0;
- padding: 0;
- overflow: hidden;
- float: right;
- height: 91px;
- left: 0px;
- top: 985px;
- color: #FFF;
- float: left;
- background: #202028; */
