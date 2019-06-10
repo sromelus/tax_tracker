@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/trips/reports/byweeks', to: 'trips#index'
   get '/trips/reports/bymonths', to: 'trips#index'
   get '/trips/reports/byyears', to: 'trips#index'
+  get '/aboutUs', to: 'abouts#index'
+  get 'contact', to: 'contacts#index'
 
   namespace :api do
     namespace :v1 do
