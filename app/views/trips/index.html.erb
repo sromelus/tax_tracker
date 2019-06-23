@@ -1,7 +1,7 @@
 <% if @user %>
 <div class="footer">
-  <p><a href="#"><strong>About Us<strong></a></p>
-    <p><a href="#"><strong>Contact<strong></a></p>
+  <p><a><strong><%= link_to 'About Us', aboutUs_path %><strong></a></p>
+  <p><a><strong><%= link_to 'Contact', contact_path %><strong></a></p>
 </div>
   <div id="app" />
 <% else %>
