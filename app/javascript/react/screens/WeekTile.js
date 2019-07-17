@@ -18,11 +18,3 @@ const WeeksTile = props => {
 }
 
 export default WeeksTile;
-
-// return(
-//       <div>
-//         <p>Name: {this.state.launcher.name}</p>
-//           <div>
-//           <p>Bio: {this.state.launcher.bio}</p>
-//           </div>
-//       </div>
