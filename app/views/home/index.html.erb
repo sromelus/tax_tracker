@@ -1,0 +1,48 @@
+<% if @user %>
+
+  <div id="app" />
+
+<% else %>
+
+  <div class="container">
+    <div class="container-inside">
+      <nav>
+        <a href="/">
+          <img src="/assets/Logo.png" alt="">
+        </a>
+        <ul>
+          <li>
+            <a>
+              <%= link_to 'Sign In', new_user_session_path, class:"button-home-page" %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to 'Sign Up', new_user_registration_path, class:"button-home-page" %>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <img src="/assets/Homeimage.png" alt="">
+
+        <section class="home-text-one">
+          <h1>Welcome to Tax Tracker</h1>
+          <h1>Enjoy the benefit of tracking your</h1>
+          <h1>mileages, earnings and taxes</h1>
+          <h1>for free.</h1>
+          <a>
+            <%= link_to 'Sign Up', new_user_registration_path, class:"button-home-page" %>
+          </a>
+          <p>Already have an account?
+            <a>
+              <%= link_to ' Log In', new_user_session_path %>
+            </a>
+          </p>
+        </section>
+      </main>
+    </div>
+  </div>
+  
+<% end %>

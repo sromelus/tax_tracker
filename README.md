@@ -5,23 +5,34 @@ each mile the user drive. The app will provide the user a comprehensive list of 
 
 You can see a demo version running at http://taxtrackr.herokuapp.com
 
-Ruby version 2.4.5
+####  Ruby version 2.4.5
 
 System dependencies
 
 fontAwesome
 
-Startup
+## Startup - From the root folder
+In order to run the app locally. Open two command line tabs.
+`cd <app name>`
 
-run two processes from the project root yarn run start and rails s
-Db Configuration
+#### On the first tab run
+>1. bundle install
+>2. bundle exec bundle
+>2. bundle exec rails s
 
-running rake db:create; rake db:migrate; rake db:seed should get your db set up.
-How to run the test suite
+#### On the second tab run
+>1. yarn install
+>1. yarn run start
 
-You can run enzyme tests with yarn run test
+## How to run the test suite
 
-You can run rspec tests with bundle exec rspec
+You can run enzyme tests with
+
+> 1. yarn run test
+
+You can run rspec tests with
+
+> 2. bundle exec rspec
 
 Deployment instructions
 

@@ -1,68 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TaxTracker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <link rel="stylesheet" href="dashboard.css">
-  <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css">
+  <head>
+    <title>TaxTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheets" href="dashboard.css">
+    <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css">
     <%= javascript_include_tag "vendor/modernizr" %>
 
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-  <ul class="top-nav">
-    <li>
-      <a href="/">
-        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/Logo.png' %>
-      </a>
-    </li>
+    <%= yield %>
 
-    <%- if current_user -%>
-    <li class="right">
-    <a>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"button" %>
-    </a>
-    </li>
-    <%- else -%>
-    <li class="right">
-      <a>
-      <%= link_to 'Sign Up', new_user_registration_path, class:"button" %>
-      </a>
-    </li>
-    <li class="right">
-      <a>
-      <%= link_to 'Sign In', new_user_session_path, class:"button" %>
-      </a>
-    </li>
+    <%= javascript_include_tag 'application' %>
+
+    <%- if Rails.env.development? || Rails.env.test? -%>
+      <%= javascript_tag do %>
+        window.railsEnv = '<%= Rails.env %>'
+      <%- end -%>
     <%- end -%>
-  </ul>
+    <%= javascript_pack_tag 'application' %>
+
+    <%= yield :extra_footer %>
+
+    <footer class="footer">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </footer>
 
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
-
-  <%= yield %>
-
-  <%= javascript_include_tag 'application' %>
-
-  <%- if Rails.env.development? || Rails.env.test? -%>
-    <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
-    <%- end -%>
-  <%- end -%>
-  <%= javascript_pack_tag 'application' %>
-
-  <%= yield :extra_footer %>
-
-  <div class="footer">
-    <p><a><strong><%= link_to 'About Us', aboutUs_path %><strong></a></p>
-    <p><a><strong><%= link_to 'Contact', contact_path %><strong></a></p>
-  </div>
-
-</body>
+  </body>
 </html>

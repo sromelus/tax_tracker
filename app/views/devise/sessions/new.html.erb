@@ -1,40 +1,42 @@
-<div class="grid-container">
-  <div class="grid-item"></div>
 
-  <div class="grid-item signin-text item-vertical-pos-signin-page">
-    Welcome to Tax Tracker
-    <br>Enjoy the benefit of tracking
-    your taxes for free.
-  </div>
+<div class="container-signin-signup">
+  <div class="container-inside">
+    <nav>
+      <a href="/">
+        <img src="/assets/Logo.png" alt="">
+      </a>
+    </nav>
 
-   <div class="grid-item signin-box-form">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email, :class => 'text-label' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+    <div class="main-signin-signup">
+      <section class="home-text">
+        <h1>Welcome <span>back<span>!</h1>
+      </section>
 
-      <div class="field">
-        <%= f.label :password, :class => 'text-label' %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+      <section>
+        <%- flash.each do |key, value| -%>
+          <div class="flash flash-<%= key %>">
+            <p><%= value %></p>
+          </div>
+        <%- end -%>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field" style="padding-bottom: 10px">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-
-      <div class="field button-in-page">
-        <%= f.submit "Log in", :class => 'button small' %>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= render "devise/shared/links" %>
+         <div class="form">
+           <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => 'form') do |f| %>
+             <%= f.label "email:", :class => 'label' %><br>
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'input' %><br>
+             <%= f.label "password:", :class => 'label' %><br>
+             <%= f.password_field :password, autocomplete: "new-password", :class => 'input' %><br>
+             <% if devise_mapping.rememberable? %>
+                 <%= f.check_box :remember_me %>
+                 <%= f.label :remember_me %><br><br>
+             <% end %>
+             <%= f.submit "Log in", :class => 'button' %>
+             <a class="button button-cancel" href="/">Cancel</a>
+           <% end %>
+           <p>
+             <%= render "devise/shared/links" %>
+           </p>
+         </div>
+      </section>
     </div>
-
   </div>
-    <div class="grid-item"></div>
 </div>

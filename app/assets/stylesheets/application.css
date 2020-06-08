@@ -17,7 +17,7 @@
 
  /* .item1 { grid-area: header; } */
 
-  body {
+/* body {
    background-color: #242B60;
    font-family: Century Gothic;
  }
@@ -211,4 +211,136 @@
   display: grid;
   grid-template-columns: auto auto auto;
   padding: 10px;
+} */
+
+
+/* ================================================================================ */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 5%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  position: relative;
+  bottom: 5px;
+  margin: 0 1rem;
+}
+
+nav img {
+  width: 50%;
+  padding-left: 16px;
+  padding-bottom: 5px;
+}
+
+.button-home-page {
+  background-color: #226287;
+  padding: 5px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  outline-style: none;
+  color: #fff;
+}
+
+main img {
+  width: 40%;
+  height: 1%;
+  box-shadow: 10px rgba(0, 0, 0, 0.75);
+}
+
+main {
+  width: 800px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main section * {
+  margin: 40px 0;
+}
+
+main p a {
+  color: #008CBA;
+}
+
+.container {
+  min-height: 100%;
+  background-image: url("/assets/Group 10.png");
+  background-size: cover;
+}
+
+.home-text-one {
+  margin-right: 50px;
+}
+
+.footer {
+  height: 50px;
+  margin-top: -50px;
+}
+
+.footer ul {
+  margin: 0;
+}
+
+.footer ul li {
+  display: inline;
+  margin: 20px;
+}
+
+footer {
+  background: #202028;
+  color: white;
+  line-height: 50px;
+}
+
+footer a {
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  nav img {
+    width: 20%;
+  }
+
+  .button {
+    font-size: 5px;
+  }
+
+  .home-text {
+    margin-top: 13%;
+    font-size: 10px;
+    margin-left: 25%;
+  }
+
+  .home-text h1 {
+    margin: 10px 0;
+  }
+
+  main {
+    flex-direction: column;
+    width: 300px;
+    height: auto;
+  }
+
 }
