@@ -1,0 +1,66 @@
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  background-color: #226287;
+  padding: 5px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  outline-style: none;
+  color: #fff;
+}
+
+.button-cancel {
+  background: #4f4f57;
+  margin-left: 2%;
+}
+
+.container-aside-one {
+  position: fixed;
+  width: 1000px;
+  bottom: 13%;
+  left: 50%;
+  margin-left: -325px;
+}
+
+
+.container-trips {
+  border: 5px solid #2F3038;
+  background: #2F3038;
+  border-radius: 5px;
+}
+
+.trips-details-content {
+  width: 800px;
+  height: 530px;
+  margin: 0 auto;
+  padding-bottom: 4%;
+}
+
+.container-details-form {
+  min-height: 100%;
+  background: #2F3038;
+  width: 350px;
+}
+
+.trips-details-header {
+  display: flex;
+  padding: 5px 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.trips-details-header #trips_title {
+  color: #f1f1f1;
+}
+
+.trips-details-card {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+  margin-bottom: 20px;
+}

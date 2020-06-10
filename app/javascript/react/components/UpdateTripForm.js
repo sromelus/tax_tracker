@@ -1,48 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import ProfileInfoDetailsandFrom from '../screens/ProfileInfoDetailsandFrom'
 import Footer from '../screens/Footer'
 
-class NewTripForm extends React.Component {
-  constructor(props) {
-    super(props);
+export default class UpdateTripForm extends Component {
+  constructor(){
+    super()
     this.state = {
-      miles:'',
-      netEarning: ''
     }
-    this.handleMilesChange = this.handleMilesChange.bind(this)
-    this.handleNetEarningChange = this.handleNetEarningChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
-
-  handleMilesChange(event){
-    this.setState({miles: event.target.value })
-  }
-
-  handleNetEarningChange(event){
-    this.setState({netEarning: event.target.value})
-  }
-
-  handleSubmit(event) {
-    event.preventDefault()
-
-    let tripPayLoad = {
-      miles: this.state.miles,
-      net_earning: this.state.netEarning,
-    }
-
-    this.props.addNewTrip(tripPayLoad)
-    this.setState({
-      miles: '',
-      netEarning: '',
-    })
-  }
-
-
-
   render(){
-
-    return(
+    return (
       <div className="hero">
 
         <ProfileInfoDetailsandFrom />
@@ -84,36 +52,6 @@ class NewTripForm extends React.Component {
         <Footer />
 
       </div>
-    )
+    );
   }
 }
-
-export default NewTripForm;
-
-
-
-
-{/*
-  {"\n"}
-
-  <form onSubmit={this.handleSubmit}>
-  <label> Miles:
-  <span>
-    <input
-      type="text"
-      name="miles"
-      value={this.state.miles}
-      onChange={this.handleMilesChange}
-    />
-  </span>
-  </label>
-  <label> Net Earning:
-    <input
-      type="text"
-      name="netEarning"
-      value={this.state.netEarning}
-      onChange={this.handleNetEarningChange}
-    />
-  </label>
-  <input className="button" type="submit" value="Submit" />
-</form>*/}

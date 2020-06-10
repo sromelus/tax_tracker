@@ -3,7 +3,7 @@
   <div class="container-inside">
     <nav>
       <a href="/">
-        <img src="/assets/Logo.png" alt="">
+        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/Logo.png', class:"img"  %>
       </a>
     </nav>
 
@@ -26,3 +26,9 @@
     </div>
   </div>
 </div>
+<footer class="footer">
+  <ul>
+    <li><a><%= link_to 'About Us', aboutUs_path %></a></li>
+    <li><a><%= link_to 'Contact Us', contact_path %></a></li>
+  </ul>
+</footer>

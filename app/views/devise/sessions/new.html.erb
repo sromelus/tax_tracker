@@ -3,7 +3,7 @@
   <div class="container-inside">
     <nav>
       <a href="/">
-        <img src="/assets/Logo.png" alt="">
+        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/Logo.png', class:"img"  %>
       </a>
     </nav>
 
@@ -21,9 +21,9 @@
 
          <div class="form">
            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => 'form') do |f| %>
-             <%= f.label "email:", :class => 'label' %><br>
+             <%= f.label "email", :class => 'label' %><br>
              <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'input' %><br>
-             <%= f.label "password:", :class => 'label' %><br>
+             <%= f.label "password", :class => 'label' %><br>
              <%= f.password_field :password, autocomplete: "new-password", :class => 'input' %><br>
              <% if devise_mapping.rememberable? %>
                  <%= f.check_box :remember_me %>
@@ -40,3 +40,9 @@
     </div>
   </div>
 </div>
+<footer class="footer">
+  <ul>
+    <li><a><%= link_to 'About Us', aboutUs_path %></a></li>
+    <li><a><%= link_to 'Contact Us', contact_path %></a></li>
+  </ul>
+</footer>

@@ -1,0 +1,30 @@
+
+input.input-form {
+  margin-bottom: 20px;
+  outline-style: none;
+  border: 3px solid #176287;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #202028;
+  color: #fff;
+  width: 450px;
+  height: 34px;
+}
+
+label.label-form {
+  display: block;
+  width: 200px;
+  margin-bottom: 13.5%;
+}
+
+.label-input {
+  display: flex;
+  margin-left: 10%;
+  margin-bottom: 20px;
+}
+
+
+.trips-form-card {
+  padding-top: 35px;
+  font-size: 24px;
+}

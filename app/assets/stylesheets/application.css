@@ -245,7 +245,7 @@ nav ul li {
   margin: 0 1rem;
 }
 
-nav img {
+nav .img {
   width: 50%;
   padding-left: 16px;
   padding-bottom: 5px;
@@ -261,7 +261,7 @@ nav img {
   color: #fff;
 }
 
-main img {
+main .img2 {
   width: 40%;
   height: 1%;
   box-shadow: 10px rgba(0, 0, 0, 0.75);
@@ -342,5 +342,4 @@ footer a {
     width: 300px;
     height: auto;
   }
-
 }

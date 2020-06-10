@@ -1,4 +1,206 @@
- .side-nav{
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #b3bfcd;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+
+}
+
+nav.login-user {
+  display: block;
+  margin-left: 5%;
+  padding-top: 5%;
+}
+
+a.signout {
+  position: relative;
+  background: red;
+  left: 7.2%;
+  top: 10%;
+  /* top: 8.75%; */
+}
+
+.login-user img {
+  width: 40%;
+}
+
+.add-trip-anchor {
+  color: #000000;
+}
+
+.button {
+  background-color: #226287;
+  padding: 5px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  outline-style: none;
+  color: #fff;
+}
+
+.card {
+  background: #f1f1f1;
+  border-radius: 10px;
+  width: 200px;
+  max-height: 110px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: justify;
+  box-shadow: 5px 5px #000000;
+  color: #000000;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 5px 5px #888888;
+}
+
+.add-card {
+  width: 140px;
+  height: 20px;
+}
+
+
+.card p {
+  margin: 0;
+}
+
+
+.container-aside {
+  position: absolute;
+  width: 1000px;
+  bottom: 8%;
+  left: 50%;
+  margin-left: -325px;
+}
+
+.container-login-user {
+  min-height: 100%;
+  background: #2F3038;
+  width: 350px;
+}
+
+.container-stats {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.container-stats .card {
+  cursor: default;
+  box-shadow: 5px 5px #000000;
+  color: #000000;
+}
+
+.container-trips {
+  border: 5px solid #2F3038;
+  background: #2F3038;
+  border-radius: 5px;
+}
+
+[data-reactroot] {
+  height: 100%;
+  margin: 0;
+}
+
+.hero {
+  height: 100%;
+  margin: 0;
+}
+
+.trips-card-content {
+  width: 800px;
+  overflow: auto;
+  height: 530px;
+  padding-left: 9%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding-bottom: 4%;
+}
+
+.trips-card-content .card {
+  margin: 10px;
+}
+
+.trips-details-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.trips-details-header #trips_title {
+  color: #f1f1f1;
+}
+
+
+.profile-info img {
+  width: 60px;
+  height: 60px;
+  border: 3px solid white;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-info {
+  display: flex;
+  margin-top: 10%;
+  color: #fff;
+}
+
+.profile-name a {
+  position: relative;
+  /* display: none; */
+  top: -15px;
+}
+
+.profile-name h3 {
+  position: relative;
+  top: -10px;
+}
+
+
+.footer-login {
+  height: 50px;
+  margin-top: -50px;
+}
+
+.footer-login ul {
+  margin: 0;
+}
+
+.footer-login ul li {
+  display: inline;
+  margin: 20px;
+}
+
+footer.footer-login {
+  background: #202028;
+  color: #fff;
+  line-height: 50px;
+}
+
+footer a {
+  color: #fff;
+}
+
+
+
+
+
+ /* .side-nav{
   position: absolute;
   width: 627px;
   height: 989px;
@@ -53,4 +255,4 @@
 }
 h3 {
   color: #FFF !important;
-}
+} */
