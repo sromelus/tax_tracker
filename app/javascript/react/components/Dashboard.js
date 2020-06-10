@@ -201,6 +201,243 @@ export default class Dashboard extends Component {
                   </div>
                 </div>
               </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+              <Link to={`trips/${1}`}>
+                <div className="card">
+                  <div className="card-text">
+                    <p>&nbsp;</p>
+                    <p>Miles: </p>
+                    <p>Gross Income: </p>
+                    <p>Net Income: </p>
+                    <p>Expenses: </p>
+                    <p>Tax Owed: </p>
+                  </div>
+                  <div className="card-numbers">
+                    <p><time id="date">01-01-2020</time></p>
+                    <p id="trip-miles">0</p>
+                    <p id="trip-gross-income">$0.00</p>
+                    <p id="trip-net-income">$0.00</p>
+                    <p id="trip-expenses">$0.00</p>
+                    <p id="trip-tax-owed">$0.00</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className="trips-page-number">
+              <div className="card page-number">
+                <a className="" href="./new_trip.html" >1</a>
+              </div>
+              <div className="card page-number">
+                <a className="" href="./new_trip.html" >1</a>
+              </div>
+              <div className="card page-number">
+                <a className="" href="./new_trip.html" >1</a>
+              </div>
+              <div className="card page-number">
+                <a className="" href="./new_trip.html" >1</a>
+              </div>
+              <div className="card page-number">
+                <a className="" href="./new_trip.html" >1</a>
+              </div>
             </div>
           </div>
         </div>
