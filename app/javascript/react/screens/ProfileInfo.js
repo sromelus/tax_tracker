@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
               <div className="profile-info">
                 <img className="prof-picture" src="https://via.placeholder.com/150"/>
                 <div className="profile-name" id="profile-name">
-                  <h3>Shardly Romelus</h3>
+                  <h3>{`${props.firstName} ${props.lastName}`}</h3>
                   <a className="button" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
                 </div>
               </div>

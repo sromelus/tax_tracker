@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import ProfileInfo from '../screens/ProfileInfo'
 import Footer from '../screens/Footer'
 import NewTripForm from './NewTripForm';
-import ReactTable from 'react-table';
 
 
 export default class Dashboard extends Component {
@@ -16,12 +15,13 @@ export default class Dashboard extends Component {
      reportsToggle: "hidden",
      toggle: "▼"
    }
-   this.addNewTrip = this.addNewTrip.bind(this)
-   this.handleShowForm = this.handleShowForm.bind(this)
-   this.handleShowReport = this.handleShowReport.bind(this)
+   // this.addNewTrip = this.addNewTrip.bind(this)
+   // this.handleShowForm = this.handleShowForm.bind(this)
+   // this.handleShowReport = this.handleShowReport.bind(this)
  }
 
  componentDidMount(){
+   console.log("mounted");
    fetch("/api/v1/trips")
    .then(response => {
      if(response.ok) {
@@ -35,109 +35,116 @@ export default class Dashboard extends Component {
    .then(response => response.json())
    .then(body => {
      this.setState({
-       user: body.current_user.first_name,
+       user: {
+         firstName: body.current_user.first_name,
+         lastName: body.current_user.last_name
+       },
        trips: body.trips
      })
+     console.log(body);
    })
    .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
- handleShowForm(){
-   if (this.state.formToggle === "hidden") {
-     this.setState({
-       formToggle: "show"
+ // handleShowForm(){
+ //   if (this.state.formToggle === "hidden") {
+ //     this.setState({
+ //       formToggle: "show"
+ //
+ //     })
+ //   } else {
+ //     this.setState({
+ //       formToggle: "hidden"
+ //     })
+ //   }
+ // }
 
-     })
-   } else {
-     this.setState({
-       formToggle: "hidden"
-     })
-   }
- }
-
- handleShowReport(){
-   if (this.state.reportsToggle === "hidden") {
-     this.setState({
-       reportsToggle: "show",
-       toggle: "▲"
-     })
-   } else {
-     this.setState({
-       reportsToggle: "hidden",
-       toggle: "▼"
-     })
-   }
- }
+ // handleShowReport(){
+ //   if (this.state.reportsToggle === "hidden") {
+ //     this.setState({
+ //       reportsToggle: "show",
+ //       toggle: "▲"
+ //     })
+ //   } else {
+ //     this.setState({
+ //       reportsToggle: "hidden",
+ //       toggle: "▼"
+ //     })
+ //   }
+ // }
 
 
- addNewTrip(tripPayLoad) {
-  fetch("/api/v1/trips",{
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    body: JSON.stringify(tripPayLoad)
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status}(${response.statusText})` ,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        user: body.current_user.first_name,
-        trips: body.trips
-      })
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
- }
+ // addNewTrip(tripPayLoad) {
+ //  fetch("/api/v1/trips",{
+ //    method: 'POST',
+ //    headers: {
+ //        'Accept': 'application/json',
+ //        'Content-Type': 'application/json'
+ //      },
+ //    body: JSON.stringify(tripPayLoad)
+ //    })
+ //    .then(response => {
+ //      if (response.ok) {
+ //        return response;
+ //      } else {
+ //        let errorMessage = `${response.status}(${response.statusText})` ,
+ //        error = new Error(errorMessage);
+ //        throw(error);
+ //      }
+ //    })
+ //    .then(response => response.json())
+ //    .then(body => {
+ //      this.setState({
+ //        user: body.current_user,
+ //        trips: body.trips
+ //      })
+ //    })
+ //    .catch(error => console.error(`Error in fetch: ${error.message}`));
+ // }
 
  render(){
 
-  let miles = 0;
-  let earning = 0;
-  let trips = this.state.trips.forEach((trip) => {
-      miles += trip.miles
-      earning += trip.net_earning
-  })
-
-  const columns = [{
-   Header: 'Date',
-   accessor: 'date',
-   defaultSortDesc: true
-  },
-  {
-   Header: 'Time',
-   accessor: 'time',
-   sortable: false
-  },
-  {
-   Header: 'Earnings',
-   accessor: 'net_earning',
-   sortable: false
-  },
-  {
-   Header: 'Miles',
-   accessor: 'miles',
-   sortable: false
-  }]
-
-
-  let taxRate = 0.22;
-  let mileageRate = 0.58;
-  let estimatedTaxableEarning = earning-(miles*mileageRate);
-  let estimatedTaxableOwed = estimatedTaxableEarning * taxRate;
+  // let miles = 0;
+  // let earning = 0;
+  // let trips = this.state.trips.forEach((trip) => {
+  //     miles += trip.miles
+  //     earning += trip.net_earning
+  // })
+  //
+  // const columns = [{
+  //  Header: 'Date',
+  //  accessor: 'date',
+  //  defaultSortDesc: true
+  // },
+  // {
+  //  Header: 'Time',
+  //  accessor: 'time',
+  //  sortable: false
+  // },
+  // {
+  //  Header: 'Earnings',
+  //  accessor: 'net_earning',
+  //  sortable: false
+  // },
+  // {
+  //  Header: 'Miles',
+  //  accessor: 'miles',
+  //  sortable: false
+  // }]
+  //
+  //
+  // let taxRate = 0.22;
+  // let mileageRate = 0.58;
+  // let estimatedTaxableEarning = earning-(miles*mileageRate);
+  // let estimatedTaxableOwed = estimatedTaxableEarning * taxRate;
 
     return (
       <div className="hero">
 
-        <ProfileInfo />
+        <ProfileInfo
+          firstName={this.state.user.firstName}
+          lastName={this.state.user.lastName}
+        />
 
         <div className="container-aside">
           <div className="container-stats">
@@ -176,7 +183,7 @@ export default class Dashboard extends Component {
               <Link to={`trips/new`}>
                 <div className="card add-card">
                   <p> + </p>
-                  <p><a className="add-trip-anchor">Add new trip</a></p>
+                  <p className="add-trip-anchor">Add new trip</p>
                 </div>
               </Link>
             </div>

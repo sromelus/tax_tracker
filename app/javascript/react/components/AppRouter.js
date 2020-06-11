@@ -20,9 +20,7 @@ const AppRouter = () => {
         <Route path="/trips/new" component={NewTripForm}/>
         <Route path="/trips/:id" component={TripDetails}/>
         <Route path="/trips/:id/update" component={UpdateTripForm}/>
-        <Route path="/trips/:id/delete" component={DeleteTrip}/>
-
-        <Route path="/trips/reports/bymonths" component={Months}/>
+        {/*<Route path="/trips/:id/delete" component={DeleteTrip}/>*/}
 
       </Router>
     </div>
