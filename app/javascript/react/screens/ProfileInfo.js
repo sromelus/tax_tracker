@@ -8,7 +8,7 @@ const ProfileInfo = (props) => {
           <div className="container-inside">
             <nav className="login-user">
               <Link to={`/`}>
-                <img src="https://s3.amazonaws.com/tax-tracker-development/Logo.png" alt=""/>
+                <img src="https://s3.amazonaws.com/tax-tracker-development/Logo.png" title="To home page" alt=""/>
               </Link>
               <div className="profile-info">
                 <img className="prof-picture" src="https://via.placeholder.com/150"/>

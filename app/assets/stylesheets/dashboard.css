@@ -197,6 +197,14 @@ a.signout {
   top: -10px;
 }
 
+.negative_net_income {
+  color: #ff0014;
+}
+
+.positive_net_income {
+  color: #61d334;
+}
+
 
 .footer-login {
   height: 50px;
