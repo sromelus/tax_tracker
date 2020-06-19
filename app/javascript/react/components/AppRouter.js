@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import { Route, IndexRoute, Router, browserHistory} from 'react-router';
 import Dashboard from './Dashboard';
 import TripDetails from './TripDetails';
 import UpdateTripForm from './UpdateTripForm';
@@ -21,7 +21,6 @@ const AppRouter = () => {
         <Route path="/trips/:id" component={TripDetails}/>
         <Route path="/trips/:id/update" component={UpdateTripForm}/>
         {/*<Route path="/trips/:id/delete" component={DeleteTrip}/>*/}
-
       </Router>
     </div>
   );

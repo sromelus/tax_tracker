@@ -12,19 +12,17 @@ export default class Dashboard extends Component {
  constructor(props){
    super(props);
    this.state = {
-     user: '',
+     user: {
+       firstName: "",
+       lastName: ""
+     },
      trips: [],
      converTrips: [],
      tripsList: [],
      firstRender: true,
+     mounted: false,
      pageNumbers: [],
-     formToggle: "hidden",
-     reportsToggle: "hidden",
-     toggle: "▼"
    }
-   // this.addNewTrip = this.addNewTrip.bind(this)
-   // this.handleShowForm = this.handleShowForm.bind(this)
-   // this.handleShowReport = this.handleShowReport.bind(this)
  }
 
  componentDidMount(){
@@ -40,21 +38,35 @@ export default class Dashboard extends Component {
    })
    .then(response => response.json())
    .then(body => {
-     const trips = this.createTwoDimensional(body.trips, 1);
+     const trips = this.createTwoDimensional(body.trips, 12);
      this.setState({
+       ...this.state,
        user: {
          firstName: body.current_user.first_name,
          lastName: body.current_user.last_name
        },
        trips: body.trips,
-       converTrips: trips
+       converTrips: trips,
+       mounted: true
      })
    })
    .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
 
-handleShowTripList = (array) => {
+handleShowTripList = (e, array) => {
+  //I was trying to create the pagination
+  // className={`page-item${ currentPage === page ? ' active' : ''}`}
+  // console.log(e);
+  //
+  // this.state.pageNumbers.forEach((page) => {
+  //   console.log(page.props);
+  // })
+  //
+  //
+  // console.log(e.currentTarget);
+
+
   let tripsList;
   if(array.length > 0){
       tripsList =  array.map((trip) => {
@@ -86,8 +98,8 @@ handleShowTripList = (array) => {
 handleShowPages = () => {
   const pageNumbers = this.state.converTrips.map((trip, index) => {
     return (
-      <div className="card page-number" key={index} onClick={() => this.handleShowTripList(trip)}>
-        <a className="" >{index+1}</a>
+      <div className="card page-number" id="" key={index} onClick={(e) => this.handleShowTripList(e, trip)}>
+        <a className="" id="">{index+1}</a>
       </div>
     )
   })
@@ -101,7 +113,44 @@ createTwoDimensional = ((arr, size) => {
    let resultList = [];
    for(let i=0; i < arr.length; i = i+size) resultList.push(arr.slice(i,i+size));
    return resultList;
- })
+})
+
+
+displayTripCard = (mounted, arrayToDisplay) => {
+  if (mounted){
+    if(arrayToDisplay.length > 0){
+      return arrayToDisplay;
+    } else {
+      return <h3>Please click the add new trip button to start tracking your taxes.</h3>;
+    }
+  } else {
+    return <h3>Loading...</h3>;
+  }
+}
+
+// {this.state.mounted ?
+//   (this.state.tripsList)
+//   :
+//   (<h3>Loading...</h3>)
+// }
+
+
+// displayTripCard = (firstRender, array, arrayToDisplay) => {
+//   if (firstRender === true && array.length === 0){
+//     return <h3>Loading...</h3>;
+//   } else if (firstRender === false && array.length === 0) {
+//     return <h3>Please click the add new trip button to start tracking your miles</h3>;
+//   } else if (firstRender === false && array.length > 0) {
+//     return arrayToDisplay;
+//   }
+// }
+
+
+// {this.state.trips.length >= 0 ?
+//   (this.state.tripsList)
+//   :
+//   (<h3>Loading...</h3>)
+// }
 
 
  // handleShowForm(){
@@ -162,11 +211,12 @@ createTwoDimensional = ((arr, size) => {
 
 
  render(){
-   // if((this.state.trips > 0 && this.state.firstRender){
-   //   const tripFirstPage = this.state.converTrips[0];
-   //   this.handleShowTripList(tripFirstPage);
-   //   console.log(tripFirstPage);
-   // }
+
+   if(this.state.trips.length > 0 && this.state.firstRender){
+     const tripFirstPage = this.state.converTrips[0];
+     this.handleShowTripList("", tripFirstPage);
+     this.handleShowPages();
+   }
 
    // if(this.state.trips.length > 0) {
    //   this.handleShowPages();
@@ -190,7 +240,7 @@ createTwoDimensional = ((arr, size) => {
        insurance += trip.insurance
    })
 
-   const mileageDeduction = miles * 0.58
+   const mileageDeduction = miles * mileageRate;
    const expenses = maintenance + gas + insurance + food;
    let netIncome = grossIncome - expenses - mileageDeduction;
 
@@ -238,6 +288,7 @@ createTwoDimensional = ((arr, size) => {
      classColor = "negative_net_income";
      netIncome = `(${(netIncome*-1).toFixed(2)})`;
    } else if (netIncome > 0) {
+     netIncome = `(${(netIncome).toFixed(2)})`
      classColor = "positive_net_income";
    }
 
@@ -295,6 +346,10 @@ createTwoDimensional = ((arr, size) => {
   // let estimatedTaxableEarning = earning-(miles*mileageRate);
   // let estimatedTaxableOwed = estimatedTaxableEarning * taxRate;
 
+  // this.state.pageNumbers.forEach((page) => {
+  //   console.log(page.props);
+  // })
+
     return (
       <div className="hero">
 
@@ -345,45 +400,10 @@ createTwoDimensional = ((arr, size) => {
               </Link>
             </div>
             <div className="trips-card-content">
-              {this.state.tripsList}
-              {/*<Link to={`trips/${1}`}>
-                <div className="card">
-                  <div className="card-text">
-                    <p>&nbsp;</p>
-                    <p>Miles: </p>
-                    <p>Gross Income: </p>
-                    <p>Net Income: </p>
-                    <p>Expenses: </p>
-                    <p>Tax Owed: </p>
-                  </div>
-                  <div className="card-numbers">
-                    <p><time id="date">01-01-2020</time></p>
-                    <p id="trip-miles">0</p>
-                    <p id="trip-gross-income">$0.00</p>
-                    <p id="trip-net-income">$0.00</p>
-                    <p id="trip-expenses">$0.00</p>
-                    <p id="trip-tax-owed">$0.00</p>
-                  </div>
-                </div>
-              </Link>*/}
+            {this.displayTripCard(this.state.mounted, this.state.tripsList)}
             </div>
             <div className="trips-page-number">
               {this.state.pageNumbers}
-              {/*<div className="card page-number">
-                <a className="" href="./new_trip.html" >1</a>
-              </div>
-              <div className="card page-number">
-                <a className="" href="./new_trip.html" >1</a>
-              </div>
-              <div className="card page-number">
-                <a className="" href="./new_trip.html" >1</a>
-              </div>
-              <div className="card page-number">
-                <a className="" href="./new_trip.html" >1</a>
-              </div>
-              <div className="card page-number">
-                <a className="" href="./new_trip.html" >1</a>
-              </div>*/}
             </div>
           </div>
         </div>

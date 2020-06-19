@@ -132,6 +132,10 @@ a.signout {
   margin: 10px;
 }
 
+.trips-card-content h3 {
+  color: #c9c6c6;
+}
+
 .trips-details-header {
   display: flex;
   justify-content: space-between;
@@ -164,12 +168,13 @@ a.signout {
 }
 
 .page-number:hover {
-  background: #000000;
+  background: #858594;
   box-shadow: 0px 0px;
 }
 
-.page-number:hover a {
+#selected {
   color: #f1f1f1;
+  background: #000000;
 }
 
 .profile-info img {

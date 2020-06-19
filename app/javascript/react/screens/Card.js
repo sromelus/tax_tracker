@@ -8,6 +8,7 @@ export default (props) => {
     classColor = "negative_net_income";
     netIncome = `(${(netIncome*-1).toFixed(2)})`
   } else if (netIncome > 0) {
+    netIncome = `(${(netIncome).toFixed(2)})`
     classColor = "positive_net_income";
   }
 

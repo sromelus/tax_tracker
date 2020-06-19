@@ -1,0 +1,10 @@
+
+.show-delete {
+  display: 'block';
+  float: right;
+  margin-top: 5%;
+}
+
+.hide-delete {
+  display: none;
+}

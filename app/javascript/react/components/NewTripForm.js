@@ -7,45 +7,113 @@ class NewTripForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      miles:'',
-      netEarning: ''
+      user: {
+        firstName: '',
+        lastName: ''
+      },
+      trip: {
+        miles: '',
+        gross_income: '',
+        maintenance: '',
+        gas: '',
+        insurance: '',
+        food: ''
+      },
+      message: '',
+      errors: ''
     }
-    this.handleMilesChange = this.handleMilesChange.bind(this)
-    this.handleNetEarningChange = this.handleNetEarningChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleMilesChange(event){
-    this.setState({miles: event.target.value })
+
+  componentDidMount(){
+    const id = this.props.params.id;
+
+    fetch(`/api/v1/trips`)
+    .then(response => {
+      if(response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        user: {
+          firstName: body.current_user.first_name,
+          lastName: body.current_user.last_name
+        }
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleNetEarningChange(event){
-    this.setState({netEarning: event.target.value})
-  }
 
-  handleSubmit(event) {
-    event.preventDefault()
-
-    let tripPayLoad = {
-      miles: this.state.miles,
-      net_earning: this.state.netEarning,
-    }
-
-    this.props.addNewTrip(tripPayLoad)
+  handleChange = (e) => {
     this.setState({
-      miles: '',
-      netEarning: '',
+      trip: {
+        ...this.state.trip,
+        [e.target.name]: e.target.value
+      }
     })
   }
 
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const trip = {
+      miles: parseInt(this.state.trip.miles),
+      gross_income: parseFloat(this.state.trip.gross_income),
+      maintenance: parseFloat(this.state.trip.maintenance),
+      gas: parseFloat(this.state.trip.gas),
+      insurance: parseFloat(this.state.trip.insurance),
+      food: parseFloat(this.state.trip.food)
+    }
+
+    console.log(trip);
+
+    fetch(`/api/v1/trips`, {
+       method: 'POST',
+       headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+         },
+       body: JSON.stringify({trip})
+       })
+       .then(response => {
+         if (response.ok) {
+           this.props.router.push('/');
+           return response;
+         } else {
+           let errorMessage = `${response.status}(${response.statusText})`;
+           error = new Error(errorMessage);
+           throw(error);
+         }
+       })
+       .then(response => response.json())
+       .then(body => {
+         this.setState({
+           ...this.state,
+           message: body.message,
+           errors: body.errors
+         })
+       })
+       .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
 
   render(){
 
-    return(
+    return (
       <div className="hero">
 
-        <ProfileInfoDetailsandFrom />
+        <ProfileInfoDetailsandFrom
+          firstName={this.state.user.firstName}
+          lastName={this.state.user.lastName}
+        />
         <div className="container-aside-one">
           <div className="container-trips">
             <div className="trips-details-header">
@@ -53,27 +121,29 @@ class NewTripForm extends React.Component {
             </div>
             <div className="trips-details-content">
               <div className="trips-form-card">
-                <form className="" action="index.html" method="post">
+                <form onSubmit={this.handleSubmit}>
                   <div className="label-input">
                     <div className="labels">
-                      <label className="label-form" for="miles">Miles:</label>
-                      <label className="label-form" for="grossincome">Gross Income:</label>
-                      <label className="label-form" for="maintenance">Maintenance:</label>
-                      <label className="label-form" for="gas">Gas:</label>
-                      <label className="label-form" for="food">Food:</label>
-                      <label className="label-form" for="insurance">Insurance:</label>
+                      <label className="label-form" htmlFor="miles">Miles:</label>
+                      <label className="label-form" htmlFor="grossincome">Gross Income:</label>
+                      <label className="label-form" htmlFor="maintenance">Maintenance:</label>
+                      <label className="label-form" htmlFor="gas">Gas:</label>
+                      <label className="label-form" htmlFor="food">Food:</label>
+                      <label className="label-form" htmlFor="insurance">Insurance:</label>
                     </div>
                     <div className="">
-                      <input className="input-form" type="text" id="miles" name="miles" value=""/>
-                      <input className="input-form" type="text" id="grossincome" name="grossincome" value=""/>
-                      <input className="input-form" type="text" id="maintenance" name="maintenance" value=""/>
-                      <input className="input-form" type="text" id="gas" name="gas" value=""/>
-                      <input className="input-form" type="text" id="food" name="food" value=""/>
-                      <input className="input-form" type="text" id="insurance" name="insurance" value=""/>
+                      <input className="input-form" type="text" maxLength="5" id="miles" name="miles" onChange={this.handleChange} value={this.state.trip.miles}/>
+                      <input className="input-form" type="text" maxLength="5" id="gross_income" name="gross_income" onChange={this.handleChange} value={this.state.trip.gross_income}/>
+                      <input className="input-form" type="text" maxLength="5" id="maintenance" name="maintenance" onChange={this.handleChange} value={this.state.trip.maintenance}/>
+                      <input className="input-form" type="text" maxLength="5" id="gas" name="gas" onChange={this.handleChange}
+                      value={this.state.trip.gas}/>
+                      <input className="input-form" type="text" maxLength="5" id="food" name="food" onChange={this.handleChange}
+                      value={this.state.trip.food}/>
+                      <input className="input-form" type="text" maxLength="5" id="insurance" name="insurance" onChange={this.handleChange} value={this.state.trip.insurance}/>
                     </div>
                   </div>
                   <div className="action-buttons">
-                    <button className="button">Submit</button>
+                    <input className="button" type="submit" value="Submit" />
                     <Link className="button button-cancel" to={`/`}>Cancel</Link>
                   </div>
                 </form>
@@ -89,31 +159,3 @@ class NewTripForm extends React.Component {
 }
 
 export default NewTripForm;
-
-
-
-
-{/*
-  {"\n"}
-
-  <form onSubmit={this.handleSubmit}>
-  <label> Miles:
-  <span>
-    <input
-      type="text"
-      name="miles"
-      value={this.state.miles}
-      onChange={this.handleMilesChange}
-    />
-  </span>
-  </label>
-  <label> Net Earning:
-    <input
-      type="text"
-      name="netEarning"
-      value={this.state.netEarning}
-      onChange={this.handleNetEarningChange}
-    />
-  </label>
-  <input className="button" type="submit" value="Submit" />
-</form>*/}
