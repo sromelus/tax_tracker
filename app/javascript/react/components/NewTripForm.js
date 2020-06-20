@@ -129,7 +129,7 @@ class NewTripForm extends React.Component {
                       <label className="label-form" htmlFor="maintenance">Maintenance:</label>
                       <label className="label-form" htmlFor="gas">Gas:</label>
                       <label className="label-form" htmlFor="food">Food:</label>
-                      <label className="label-form" htmlFor="insurance">Insurance:</label>
+                      <label className="label-form" htmlFor="insurance" title="daily average insurance cost">Insurance: (!) </label>
                     </div>
                     <div className="">
                       <input className="input-form" type="text" maxLength="5" id="miles" name="miles" onChange={this.handleChange} value={this.state.trip.miles}/>
@@ -139,7 +139,7 @@ class NewTripForm extends React.Component {
                       value={this.state.trip.gas}/>
                       <input className="input-form" type="text" maxLength="5" id="food" name="food" onChange={this.handleChange}
                       value={this.state.trip.food}/>
-                      <input className="input-form" type="text" maxLength="5" id="insurance" name="insurance" onChange={this.handleChange} value={this.state.trip.insurance}/>
+                      <input className="input-form" type="text" maxLength="5" id="insurance" name="insurance" placeholder="Enter daily average insurance cost" onChange={this.handleChange} value={this.state.trip.insurance}/>
                     </div>
                   </div>
                   <div className="action-buttons">

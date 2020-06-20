@@ -164,7 +164,19 @@ a.signout {
 }
 
 .page-number a {
+  display: block;
+  padding: 3px 11px;
+  margin-left: -11px;
   color: #000000;
+}
+
+div.page-number:target {
+  background-color: #000000;
+  color: #f1f1f1 !important;
+}
+
+div.page-number:target a {
+  color: #f1f1f1;
 }
 
 .page-number:hover {
