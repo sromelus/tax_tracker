@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ProfileInfoDetailsandFrom from '../screens/ProfileInfoDetailsandFrom'
+import ProfileInfoDetailsandForm from '../screens/ProfileInfoDetailsandForm'
 import Footer from '../screens/Footer'
 
 class NewTripForm extends React.Component {
@@ -110,7 +110,7 @@ class NewTripForm extends React.Component {
     return (
       <div className="hero">
 
-        <ProfileInfoDetailsandFrom
+        <ProfileInfoDetailsandForm
           firstName={this.state.user.firstName}
           lastName={this.state.user.lastName}
         />

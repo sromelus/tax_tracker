@@ -195,11 +195,12 @@ div.page-number:target a {
   border: 3px solid white;
   border-radius: 50%;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .profile-info {
   display: flex;
-  margin-top: 10%;
+  margin: 10% 0;
   color: #fff;
 }
 
@@ -222,6 +223,20 @@ div.page-number:target a {
   color: #61d334;
 }
 
+.upload-form {
+  border: 3px solid #f1f1f1;
+  border-radius: 10px;
+  background: #b3bfcd;
+  width: 300px;
+  padding-left: 2%;
+  color: #000000;
+  transition-duration: 5s
+}
+
+.upload-form form * {
+  display: block;
+  margin: 2% 0;
+}
 
 .footer-login {
   height: 50px;

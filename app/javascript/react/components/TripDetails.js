@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import DeleteTrip from './DeleteTrip'
-import ProfileInfoDetailsandFrom from '../screens/ProfileInfoDetailsandFrom'
+import ProfileInfoDetailsandForm from '../screens/ProfileInfoDetailsandForm'
 import Footer from '../screens/Footer'
 
 export default class TripDetails extends Component {
@@ -58,7 +58,7 @@ export default class TripDetails extends Component {
     return (
       <div className="hero">
 
-        <ProfileInfoDetailsandFrom
+        <ProfileInfoDetailsandForm
           firstName={this.state.user.firstName}
           lastName={this.state.user.lastName}
         />
