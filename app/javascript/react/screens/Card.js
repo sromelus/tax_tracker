@@ -19,9 +19,9 @@ export default (props) => {
           <p>&nbsp;</p>
           <p>Miles: </p>
           <p>Gross Income: </p>
-          <p>Net Income: </p>
+          <p>Est. Net Income: </p>
           <p>Expenses: </p>
-          <p>Tax Owed: </p>
+          <p>Est. Tax Owed: </p>
         </div>
         <div className="card-numbers">
           <p><time id="date">{props.date}</time></p>

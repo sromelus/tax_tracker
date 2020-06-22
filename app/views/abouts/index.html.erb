@@ -1,6 +1,46 @@
-<div class="text">
-  <h3>About Us</h3>
+<div class="container-about-page">
+  <div class="container-inside">
+    <nav>
+      <a href="/">
+        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/Logo.png', class:"img"  %>
+      </a>
+      <ul>
+        <% if @user %>
+          <li>
+              <%= @user.first_name %>
+              <%= @user.last_name %>
+          </li>
+          <li>
+            <a>
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"button-home-page" %>
+            </a>
+          </li>
+        <% else %>
+          <li>
+            <a>
+              <%= link_to 'Log In', new_user_session_path, class:"button-home-page" %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to 'Sign Up', new_user_registration_path, class:"button-home-page" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
 
-  This is web application was built as a final project from the coding course that I attended.<br/>
-  The work is still in progress...more to come soon
+    <main class="text">
+      <h3>About Us</h3>
+
+      This is web application was built as a final project from the coding course that I attended.<br/><br/>
+      The work is still in progress...more to come soon
+    </main>
+  </div>
 </div>
+<footer class="footer">
+  <ul>
+    <li><a><%= link_to 'About Us', aboutUs_path %></a></li>
+    <li><a><%= link_to 'Contact Us', contact_path %></a></li>
+  </ul>
+</footer>

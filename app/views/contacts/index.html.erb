@@ -1,11 +1,50 @@
-<div class="text">
-  <h3>Contact</h3>
+<div class="container-about-page">
+  <div class="container-inside">
+    <nav>
+      <a href="/">
+        <%= image_tag'https://s3.amazonaws.com/tax-tracker-development/Logo.png', class:"img"  %>
+      </a>
+      <ul>
+        <% if @user %>
+          <li>
+              <%= @user.first_name %>
+              <%= @user.last_name %>
+          </li>
+          <li>
+            <a>
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"button-home-page" %>
+            </a>
+          </li>
+        <% else %>
+          <li>
+            <a>
+              <%= link_to 'Log In', new_user_session_path, class:"button-home-page" %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to 'Sign Up', new_user_registration_path, class:"button-home-page" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
 
-  Name: Shardly Romelus <br/>
+    <main class="text">
+      <h3>Contact Us</h3>
 
-  Please feel free to contact me on Linkedin and also see my repos on Github. <br/>
+      Name: Shardly Romelus <br/><br/>
 
-  Linkedin: https://www.linkedin.com/in/shardlyromelus <br/>
-  Github: https://github.com/sromelus <br/>
+      Please feel free to contact me on Linkedin and also see this project's repo on <a href="https://github.com/sromelus/tax_tracker" target="_blank" style="color:#56ccdd">github</a>. <br/><br/>
 
+      <a href="https://www.linkedin.com/in/shardlyromelus" target="_blank" style="color:#56ccdd">Linkedin</a>: https://www.linkedin.com/in/shardlyromelus <br/><br/>
+      <a href="https://github.com/sromelus" target="_blank" style="color:#56ccdd">Github</a>: https://github.com/sromelus <br/>
+    </main>
+  </div>
 </div>
+<footer class="footer">
+  <ul>
+    <li><a><%= link_to 'About Us', aboutUs_path %></a></li>
+    <li><a><%= link_to 'Contact Us', contact_path %></a></li>
+  </ul>
+</footer>

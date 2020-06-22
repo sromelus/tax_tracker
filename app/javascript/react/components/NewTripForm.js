@@ -67,10 +67,10 @@ class NewTripForm extends React.Component {
     const trip = {
       miles: parseInt(this.state.trip.miles),
       gross_income: parseFloat(this.state.trip.gross_income),
-      maintenance: parseFloat(this.state.trip.maintenance),
-      gas: parseFloat(this.state.trip.gas),
-      insurance: parseFloat(this.state.trip.insurance),
-      food: parseFloat(this.state.trip.food)
+      maintenance: parseFloat(this.state.trip.maintenance || 0),
+      gas: parseFloat(this.state.trip.gas || 0),
+      insurance: parseFloat(this.state.trip.insurance || 0),
+      food: parseFloat(this.state.trip.food || 0)
     }
 
     console.log(trip);
@@ -84,6 +84,7 @@ class NewTripForm extends React.Component {
        body: JSON.stringify({trip})
        })
        .then(response => {
+         console.log(response);
          if (response.ok) {
            this.props.router.push('/');
            return response;
@@ -95,6 +96,7 @@ class NewTripForm extends React.Component {
        })
        .then(response => response.json())
        .then(body => {
+         console.log(body);
          this.setState({
            ...this.state,
            message: body.message,
@@ -129,7 +131,7 @@ class NewTripForm extends React.Component {
                       <label className="label-form" htmlFor="maintenance">Maintenance:</label>
                       <label className="label-form" htmlFor="gas">Gas:</label>
                       <label className="label-form" htmlFor="food">Food:</label>
-                      <label className="label-form" htmlFor="insurance" title="daily average insurance cost">Insurance: (!) </label>
+                      <label className="label-form" htmlFor="insurance" title="Daily average insurance cost. For expample if your premium is $500 for 6 month. You need to divide $500 by the number of days in a 6 months period.&#013;Exp. $500 / (6 months x 30 days ) = $2.77 ≈ $3.00">Insurance: (&#8505;) </label>
                     </div>
                     <div className="">
                       <input className="input-form" type="text" maxLength="5" id="miles" name="miles" onChange={this.handleChange} value={this.state.trip.miles}/>

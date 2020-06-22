@@ -68,10 +68,10 @@ export default class UpdateTripForm extends Component {
     const trip = {
       miles: parseInt(this.state.trip.miles),
       gross_income: parseFloat(this.state.trip.gross_income),
-      maintenance: parseFloat(this.state.trip.maintenance),
-      gas: parseFloat(this.state.trip.gas),
-      insurance: parseFloat(this.state.trip.insurance),
-      food: parseFloat(this.state.trip.food)
+      maintenance: parseFloat(this.state.trip.maintenance || 0),
+      gas: parseFloat(this.state.trip.gas || 0),
+      insurance: parseFloat(this.state.trip.insurance || 0),
+      food: parseFloat(this.state.trip.food || 0)
     }
 
     console.log(trip);

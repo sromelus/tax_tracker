@@ -24,12 +24,12 @@ class Api::V1::TripsController < ApplicationController
 
   def destroy
     @trip = current_user.trips.find(params[:id])
-    
+
     if @trip.destroy
       render json: { message: "Trip deleted successfully", errors: "" }
     else
       @errors = @trip.errors.full_messages.join
-      render json: { current_user: current_user, trips: serializer_trips, errors: @errors }
+      render json: { current_user: current_user, errors: @errors }, status: 400
     end
   end
 
@@ -40,8 +40,8 @@ class Api::V1::TripsController < ApplicationController
     if @trip.update(miles: trip_params['miles'], gross_income: trip_params['gross_income'], maintenance: trip_params['maintenance'], gas: trip_params['gas'], insurance: trip_params['insurance'], food: trip_params['food'], user_id: current_user.id)
       render json: { message: "Trip updated successfully", errors: "" }
     else
-      @errors = @trip.errors.full_messages.join
-      render json: { current_user: current_user, trips: serializer_trips, errors: @errors }
+      @errors = @trip.errors.full_messages
+      render json: { current_user: current_user, trips: serializer_trips, errors: @errors }, status: 400
     end
   end
 
@@ -57,8 +57,9 @@ class Api::V1::TripsController < ApplicationController
      if @trip.save
        render json: { message: "New trip saved successfully", errors: "" }
      else
-       @errors = @trip.errors.full_messages.join
-       render json: { current_user: current_user, trips: serializer_trips, errors: @errors }
+       # binding.pry
+       @errors = @trip.errors.full_messages
+       render json: { current_user: current_user, trips: serializer_trips, errors: @errors }, status: 400
      end
   end
 

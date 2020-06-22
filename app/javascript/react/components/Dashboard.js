@@ -26,6 +26,7 @@ export default class Dashboard extends Component {
  }
 
  componentDidMount(){
+
    fetch("/api/v1/trips")
    .then(response => {
      if(response.ok) {
@@ -49,13 +50,19 @@ export default class Dashboard extends Component {
        converTrips: trips,
        mounted: true
      })
+
+     if(this.state.trips.length > 0 && this.state.firstRender){
+       const tripFirstPage = this.state.converTrips[0];
+       this.handleShowTripList("", tripFirstPage);
+       this.handleShowPages();
+     }
+
    })
    .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
 
 handleShowTripList = (e, array) => {
-  console.log(e.currentTarget);
   let tripsList;
   const mileageRate = 0.58;
   if(array.length > 0){
@@ -165,12 +172,6 @@ calculateTaxes = (taxableIncome) => {
 
  render(){
 
-   if(this.state.trips.length > 0 && this.state.firstRender){
-     const tripFirstPage = this.state.converTrips[0];
-     this.handleShowTripList("", tripFirstPage);
-     this.handleShowPages();
-   }
-
    let miles = 0;
    let grossIncome = 0;
    let maintenance = 0;
@@ -221,7 +222,7 @@ calculateTaxes = (taxableIncome) => {
               <div className="card-text">
                 <p>Miles: </p>
                 <p>Gross Income: </p>
-                <p>Net Income: </p>
+                <p>Est. Net Income: </p>
               </div>
               <div className="card-numbers">
                 <p id="trips-miles">{miles}</p>
@@ -239,7 +240,7 @@ calculateTaxes = (taxableIncome) => {
             </div>
             <div className="card">
               <div className="card-text">
-                <p>Total Taxes Owed: </p>
+                <p>Est. Taxes Owed: </p>
               </div>
               <div className="card-numbers">
                 <p id="trips-tax-owed">${taxOwed.toFixed(2)}</p>
