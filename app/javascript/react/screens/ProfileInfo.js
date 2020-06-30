@@ -6,52 +6,99 @@ class ProfileInfo extends Component {
   constructor(props){
     super(props)
     this.state = {
-      imageUpload: false,
-      show: "none"
+      image: '',
+      imageUploadSetting: false,
+      show: "none",
+      message: '',
+      errors: ''
     }
   }
 
   showImageUpload = () => {
-    if(!this.state.imageUpload){
+    if(!this.state.imageUploadSetting){
        this.setState({
          show: "",
-         imageUpload: true
+         imageUploadSetting: true
        })
     } else {
        this.setState({
         show: "none",
-        imageUpload: false
+        imageUploadSetting: false
        })
     }
   }
 
+  showFile = (e) => {
+    let imageFile = e.target.files[0];
+    this.setState({
+      ...this.state,
+      image: imageFile
+    })
+  }
+
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let imageData = new FormData();
+    imageData.append('user_photo', this.state.image)
+
+    fetch(`/api/v1/user_photos`, {
+       method: 'POST',
+       headers: {
+           'Accept': 'application/json',
+         },
+       body: imageData
+       })
+       .then(response => {
+         console.log(response);
+         if (response.ok) {
+           return response;
+         } else {
+           let errorMessage = `${response.status}(${response.statusText})`;
+           error = new Error(errorMessage);
+           throw(error);
+         }
+       })
+       .then(response => response.json())
+       .then(body => {
+         this.setState({
+           ...this.state,
+           imageUrl: body.image,
+           message: body.message,
+           errors: body.errors
+         })
+       })
+       .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
 
   render(){
-    return (
-        <div className="container-login-user">
-          <div className="container-inside">
-            <nav className="login-user">
-              <Link to={`/`}>
-                <img src="https://s3.amazonaws.com/tax-tracker-development/Logo.png" title="To home page" alt=""/>
-              </Link>
-              <div className="profile-info">
-                <img className="prof-picture" src="https://via.placeholder.com/150" onClick={this.showImageUpload}/>
-                <div className="profile-name" id="profile-name">
-                  <h3>{`${this.props.firstName} ${this.props.lastName}`}</h3>
-                  <a className="button" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-                </div>
-              </div>
 
-              <div className="upload-form" style={{ display: this.state.show }}>
-                <p>Click on the "Choose File" button to upload your profile picture.</p>
-                <form action="/">
-                  <input type="file" id="myFile" name="filename"/>
-                  <input type="submit"/>
-                </form>
+    return (
+
+        <div className="container-inside">
+          <nav className="login-user">
+            <Link to={`/`}>
+              <img src="https://s3.amazonaws.com/tax-tracker-development/Logo.png" title="To home page" alt=""/>
+            </Link>
+            <div className="profile-info">
+              <img className="prof-picture" src={ `${this.props.imageUrl}` || "https://via.placeholder.com/150"} onClick={this.showImageUpload}/>
+              <div className="profile-name" id="profile-name">
+                <h3>{`${this.props.firstName} ${this.props.lastName}`}</h3>
+                <a className="button" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
               </div>
-            </nav>
-          </div>
+            </div>
+
+            <div className="upload-form" style={{ display: this.state.show }}>
+              <p>Click on the "Choose File" button to upload your profile picture.</p>
+              <form onSubmit={this.handleSubmit}>
+                <input type="file" id="myFile" name="filename" onChange={this.showFile}/>
+                <input type="submit" value="upload"/>
+              </form>
+            </div>
+          </nav>
         </div>
+        
     );
   }
 }

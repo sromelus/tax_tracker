@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :trips, only: [:index]
+  # resources :trips, only: [:index]
+  # resources :user_photos, only: [:index, :new, :create]
 
   get '/trips', to: 'home#index'
   get '/trips/:id', to: 'home#index'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :user_photos, only: [:create]
       resources :trips, only: [:index, :show, :update, :create, :destroy] do
         resources :users, only: [:index]
       end

@@ -4,7 +4,6 @@ import ProfileInfo from '../screens/ProfileInfo'
 import NewTripForm from './NewTripForm';
 import Footer from '../screens/Footer';
 import Card from '../screens/Card';
-import PageNumbers from '../screens/PageNumbers';
 
 
 
@@ -16,6 +15,7 @@ export default class Dashboard extends Component {
        firstName: "",
        lastName: ""
      },
+     imageUrl: '',
      trips: [],
      converTrips: [],
      tripsList: [],
@@ -46,6 +46,7 @@ export default class Dashboard extends Component {
          firstName: body.current_user.first_name,
          lastName: body.current_user.last_name
        },
+       imageUrl: body.image,
        trips: body.trips,
        converTrips: trips,
        mounted: true
@@ -207,14 +208,15 @@ calculateTaxes = (taxableIncome) => {
      classColor = "positive_net_income";
    }
 
-
     return (
       <div className="hero">
-
-        <ProfileInfo
-          firstName={this.state.user.firstName}
-          lastName={this.state.user.lastName}
-        />
+        <div className="container-login-user">
+          <ProfileInfo
+            imageUrl={this.state.imageUrl}
+            firstName={this.state.user.firstName}
+            lastName={this.state.user.lastName}
+          />
+        </div>
 
         <div className="container-aside">
           <div className="container-stats">
