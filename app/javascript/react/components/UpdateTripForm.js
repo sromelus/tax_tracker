@@ -21,7 +21,7 @@ export default class UpdateTripForm extends Component {
         food: 'Loading...'
       },
       message: '',
-      errors: ''
+      errors: []
     }
   }
 
@@ -95,6 +95,8 @@ export default class UpdateTripForm extends Component {
          if (response.ok) {
            this.props.router.push('/');
            return response;
+         } else if (response.status === 400) {
+           return response;
          } else {
            let errorMessage = `${response.status}(${response.statusText})`;
            error = new Error(errorMessage);
@@ -131,6 +133,13 @@ export default class UpdateTripForm extends Component {
               <p id="trips_title">Update Trip Data</p>
             </div>
             <div className="trips-details-content">
+              <div style={{color: "red"}}>
+               {this.state.errors.map((error) => {
+                 return(
+                   <li>{error.replace("is not", "must be")}</li>
+                 )
+               })}
+              </div>
               <div className="trips-form-card">
                 <form onSubmit={this.handleSubmit}>
                   <div className="label-input">

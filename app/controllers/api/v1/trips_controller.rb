@@ -73,7 +73,7 @@ class Api::V1::TripsController < ApplicationController
        render json: { message: "New trip saved successfully", errors: "" }
      else
        @errors = @trip.errors.full_messages
-       render json: { current_user: current_user, trips: serializer_trips, errors: @errors }, status: 400
+       render json: { current_user: current_user, trips: @trip, errors: @errors }, status: 400
      end
   end
 
