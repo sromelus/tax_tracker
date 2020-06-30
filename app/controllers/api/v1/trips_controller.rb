@@ -1,9 +1,17 @@
 class Api::V1::TripsController < ApplicationController
 
   def index
+
     if current_user
+      userImage = ''
+
+      if current_user.user_photo
+        userImage = current_user.user_photo.image.url
+      end
+
       render json: {
         current_user: current_user,
+        image: userImage,
         trips: serializer_trips
       }
     else
@@ -13,8 +21,15 @@ class Api::V1::TripsController < ApplicationController
 
   def show
     if current_user
+      userImage = ''
+
+      if current_user.user_photo
+        userImage = current_user.user_photo.image.url
+      end
+
       render json: {
         current_user: current_user,
+        image: userImage,
         trip: current_user.trips.find(params[:id])
       }
     else
@@ -57,7 +72,6 @@ class Api::V1::TripsController < ApplicationController
      if @trip.save
        render json: { message: "New trip saved successfully", errors: "" }
      else
-       # binding.pry
        @errors = @trip.errors.full_messages
        render json: { current_user: current_user, trips: serializer_trips, errors: @errors }, status: 400
      end

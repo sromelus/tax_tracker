@@ -11,5 +11,5 @@ class User < ApplicationRecord
   # validates_length_of :zip_code, :is => 5
 
   has_many :trips
-
+  has_one :user_photo
 end

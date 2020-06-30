@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ProfileInfoDetailsandForm from '../screens/ProfileInfoDetailsandForm'
+import ProfileInfo from '../screens/ProfileInfo'
 import Footer from '../screens/Footer'
 
 class NewTripForm extends React.Component {
@@ -11,6 +11,7 @@ class NewTripForm extends React.Component {
         firstName: '',
         lastName: ''
       },
+      imageUrl: '',
       trip: {
         miles: '',
         gross_income: '',
@@ -41,10 +42,12 @@ class NewTripForm extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
+        ...this.state,
         user: {
           firstName: body.current_user.first_name,
           lastName: body.current_user.last_name
-        }
+        },
+        imageUrl: body.image
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -112,10 +115,13 @@ class NewTripForm extends React.Component {
     return (
       <div className="hero">
 
-        <ProfileInfoDetailsandForm
-          firstName={this.state.user.firstName}
-          lastName={this.state.user.lastName}
-        />
+        <div className="container-details-form">
+          <ProfileInfo
+            imageUrl={this.state.imageUrl}
+            firstName={this.state.user.firstName}
+            lastName={this.state.user.lastName}
+          />
+        </div>
         <div className="container-aside-one">
           <div className="container-trips">
             <div className="trips-details-header">
