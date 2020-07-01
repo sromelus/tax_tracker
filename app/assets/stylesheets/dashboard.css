@@ -261,3 +261,18 @@ footer.footer-login {
 footer a {
   color: #fff;
 }
+
+
+@media (max-width: 700px) {
+  .container-aside {
+    display: none;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+  .container-login-user {
+    width: auto;
+  }
+}

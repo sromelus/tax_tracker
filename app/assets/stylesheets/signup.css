@@ -1,6 +1,7 @@
 
 
 .input {
+  display: block;
   margin-top: 2%;
   margin-bottom: 5%;
   outline-style: none;
@@ -14,6 +15,7 @@
 }
 
 .label {
+  display: block;
   font-size: 24px;
 }
 
@@ -76,4 +78,63 @@
 
 .home-text p {
   font-size: 52px;
+}
+
+@media (max-width: 700px) {
+
+  .button {
+    background-color: #226287;
+    padding: 5px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 10px;
+    outline-style: none;
+    cursor: pointer;
+  }
+
+  .check-box, .check-box-label {
+    font-size: 10px;
+    width: 7px;
+    height: 7px;
+  }
+
+  .home-text h1 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 7px;
+  }
+
+  .home-text p {
+    margin: 0 auto;
+    font-size: 1px;
+  }
+
+  #error_explanation {
+    font-size: 10px;
+  }
+
+  .label, .form p {
+    font-size: 15px;
+  }
+
+  .input {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    outline-style: none;
+    border: 3px solid #176287;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #202028;
+    color: #fff;
+    width: 200px;
+    height: 25px;
+  }
+
+  .main-signin-signup {
+    margin: 0 auto;
+    margin-top: 3%;
+    display: block;
+    width: 250px;
+  }
 }
