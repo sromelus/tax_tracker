@@ -28,3 +28,28 @@ label.label-form {
   padding-top: 35px;
   font-size: 24px;
 }
+
+@media (max-width: 700px) {
+
+  .trips-form-card {
+    padding-top: 35px;
+    font-size: 20px;
+    margin-left: -35px;
+  }
+
+  label.label-form {
+    margin-bottom: 12.7%;
+  }
+
+  input.input-form {
+    margin-bottom: 20px;
+    outline-style: none;
+    border: 3px solid #176287;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #202028;
+    color: #fff;
+    width: 120px;
+    height: 28px;
+  }
+}

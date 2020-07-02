@@ -272,6 +272,10 @@ footer a {
     color: #fff;
   }
 
+  .upload-form {
+    display: none;
+  }
+
   .profile-info img {
     width: 40px;
     height: 40px;
@@ -288,7 +292,8 @@ footer a {
   }
 
   .profile-name .button {
-    padding: 2px 3px;
+    font-size: 13px;
+    padding: 2px 10px;
   }
 
   .login-user a img {
@@ -340,29 +345,38 @@ footer a {
     display: flex;
     justify-content: space-between;
     padding: 0;
-    padding-bottom: 10px;
     font-weight: bold;
     font-size: 18px;
   }
 
+  #trips_title {
+    margin-top: 8px;
+  }
+
+  .add-card {
+    width: 80px;
+    height: 15px;
+  }
+
   .add-trip-anchor {
-    content: " ";
+    display: none;
+  }
+
+  .add-card p:first-of-type::after {
+    font-size: 16px;
+    content: "New Trip"
   }
 
   .trips-card-content {
     display: none;
     width: 230px;
     overflow: auto;
-    height: 400px;
+    height: 266px;
     padding-left: 0;
     display: block;
     margin: 0;
     flex-wrap: wrap;
     padding-bottom: 4%;
-  }
-
-  .trips-page-number .card {
-    margin-right: 3%;
   }
 
   .trips-card-content .card {
@@ -382,6 +396,17 @@ footer a {
     box-shadow: 5px 5px #000000;
     color: #000000;
     cursor: pointer;
+  }
+
+  .trips-page-number * {
+    margin-bottom: 30%;
+  }
+
+  .trips-page-number {
+    position: absolute;
+    display: block;
+    bottom: 10%;
+    left: 105%;
   }
 
 }

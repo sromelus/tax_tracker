@@ -100,8 +100,6 @@ class NewTripForm extends React.Component {
        })
        .then(response => response.json())
        .then(body => {
-         console.log(body);
-         debugger
          this.setState({
            ...this.state,
            trip: body.trips,
@@ -150,12 +148,12 @@ class NewTripForm extends React.Component {
                       <label className="label-form" htmlFor="insurance" title="Daily average insurance cost. For expample if your premium is $500 for 6 month. You need to divide $500 by the number of days in a 6 months period.&#013;Exp. $500 / (6 months x 30 days ) = $2.77 ≈ $3.00">Insurance: (&#8505;) </label>
                     </div>
                     <div className="">
-                      <input className="input-form" type="text" maxLength="7" id="miles" name="miles" placeholder="Value must be a number" onChange={this.handleChange} value={this.state.trip.miles}/>
-                      <input className="input-form" type="text" maxLength="7" id="gross_income" name="gross_income" placeholder="Value must be a number" onChange={this.handleChange} value={this.state.trip.gross_income}/>
+                      <input className="input-form" type="text" maxLength="7" id="miles" name="miles" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.miles}/>
+                      <input className="input-form" type="text" maxLength="7" id="gross_income" name="gross_income" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.gross_income}/>
                       <input className="input-form" type="text" maxLength="7" id="maintenance" name="maintenance" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.maintenance}/>
                       <input className="input-form" type="text" maxLength="7" id="gas" name="gas" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.gas}/>
                       <input className="input-form" type="text" maxLength="7" id="food" name="food" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.food}/>
-                      <input className="input-form" type="text" maxLength="7" id="insurance" name="insurance" placeholder="Enter daily average insurance cost, Default value: 0" onChange={this.handleChange} value={this.state.trip.insurance}/>
+                      <input className="input-form" type="text" maxLength="7" id="insurance" name="insurance" placeholder="Daily average cost, Default value: 0" onChange={this.handleChange} value={this.state.trip.insurance}/>
                     </div>
                   </div>
                   <div className="action-buttons">

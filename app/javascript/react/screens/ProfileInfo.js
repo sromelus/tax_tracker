@@ -38,7 +38,6 @@ class ProfileInfo extends Component {
 
 
   handleSubmit = (e) => {
-    e.preventDefault();
     let imageData = new FormData();
     imageData.append('user_photo', this.state.image)
 
@@ -98,7 +97,7 @@ class ProfileInfo extends Component {
             </div>
           </nav>
         </div>
-        
+
     );
   }
 }

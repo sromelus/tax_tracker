@@ -146,15 +146,20 @@ footer a {
 }
 
 @media (max-width: 700px) {
+
+  nav {
+    padding-top: 5%;
+  }
+
   nav a .img {
-    width: 35%;
+    width: 65%;
   }
 
   nav ul li {
     position: relative;
     bottom: 5px;
     margin: 0 5px;
-    width: 55px;
+    width: 80px;
   }
 
   nav ul {
@@ -162,7 +167,7 @@ footer a {
   }
 
   .button-home-page {
-    font-size: 10px;
+    font-size: 13px;
     padding: 2px 10px;
   }
 
@@ -185,5 +190,9 @@ footer a {
   main.text {
     width: 230px;
     padding-right: 40px;
+  }
+
+  .footer ul, .footer-login ul {
+    margin-left: 10%;
   }
 }
