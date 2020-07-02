@@ -67,11 +67,9 @@ a.signout {
   height: 20px;
 }
 
-
 .card p {
   margin: 0;
 }
-
 
 .container-aside {
   position: absolute;
@@ -264,15 +262,126 @@ footer a {
 
 
 @media (max-width: 700px) {
-  .container-aside {
-    display: none;
-  }
 
   .profile-info {
-    display: none;
+    position: absolute;
+    left: 55%;
+    top: -3%;
+    display: flex;
+    margin: 10% 0;
+    color: #fff;
+  }
+
+  .profile-info img {
+    width: 40px;
+    height: 40px;
+    border: 3px solid white;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .profile-name h3 {
+    position: relative;
+    font-size: 12px;
+    top: -10px;
+  }
+
+  .profile-name .button {
+    padding: 2px 3px;
+  }
+
+  .login-user a img {
+    width: 28%;
   }
 
   .container-login-user {
     width: auto;
   }
+
+  .upload-form {
+    border: 3px solid #f1f1f1;
+    border-radius: 10px;
+    background: #b3bfcd;
+    width: 275px;
+    padding-left: 2%;
+    color: #000000;
+    transition-duration: 5s
+  }
+
+  .container-aside {
+    position: absolute;
+    top: 13%;
+    width: 230px;
+    bottom: 10%;
+    left: 0%;
+    margin: 0%;
+    margin-left: 14%;
+  }
+
+  .container-stats {
+    padding: 5px;
+    display: block;
+    margin-bottom: 4%;
+  }
+
+  .container-stats .card {
+    margin-bottom: 4%;
+  }
+
+  .container-trips {
+    /* display: none; */
+    border: 5px solid #2F3038;
+    background: #2F3038;
+    border-radius: 5px;
+  }
+
+  .trips-details-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .add-trip-anchor {
+    content: " ";
+  }
+
+  .trips-card-content {
+    display: none;
+    width: 230px;
+    overflow: auto;
+    height: 400px;
+    padding-left: 0;
+    display: block;
+    margin: 0;
+    flex-wrap: wrap;
+    padding-bottom: 4%;
+  }
+
+  .trips-page-number .card {
+    margin-right: 3%;
+  }
+
+  .trips-card-content .card {
+    margin: 0px;
+    margin-bottom: 4%;
+  }
+
+  .card {
+    background: #f1f1f1;
+    border-radius: 10px;
+    max-height: 110px;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    box-shadow: 5px 5px #000000;
+    color: #000000;
+    cursor: pointer;
+  }
+
 }
