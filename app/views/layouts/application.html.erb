@@ -11,6 +11,14 @@
   </head>
   <body>
 
+    <div class="flash-message">
+      <%- flash.each do |key, value| -%>
+        <div class="flash flash-<%= key %>">
+          <p><%= value %></p>
+        </div>
+      <%- end -%>
+    </div>
+
     <%= yield %>
 
     <%= javascript_include_tag 'application' %>

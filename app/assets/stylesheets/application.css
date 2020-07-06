@@ -121,6 +121,49 @@ main p a {
   margin-right: 50px;
 }
 
+.flash {
+  padding: 0 10px;
+}
+
+.flash-message {
+  visibility: hidden;
+  position: absolute;
+  left: 45%;
+  top: 0%;
+  height: 5%;
+  background-color: #4cb920;
+  border-radius: 0px 0px 10px 10px;
+  animation-name: msg;
+  animation-duration: 5s;
+}
+
+@keyframes msg {
+  0% {
+    top: -5%;
+    background-color: #4cb920;
+    visibility: visible;
+  }
+}
+
+
+/* div {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  visibility: hidden;
+  position: relative;
+  animation: mymove 5s;
+}
+
+@keyframes mymove {
+  to {
+  	visibility: visible;
+    background: red;
+   }
+} */
+
+
+
 .footer {
   height: 50px;
   margin-top: -50px;
@@ -179,6 +222,10 @@ footer a {
 
   .home-text-one h1 {
     margin: 10px 0;
+  }
+
+  .flash-message {
+    display: none;
   }
 
   main {

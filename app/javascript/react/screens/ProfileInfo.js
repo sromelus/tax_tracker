@@ -84,7 +84,7 @@ class ProfileInfo extends Component {
               <img className="prof-picture" src={ `${this.props.imageUrl}` || "https://via.placeholder.com/150"} onClick={this.showImageUpload}/>
               <div className="profile-name" id="profile-name">
                 <h3>{`${this.props.firstName} ${this.props.lastName}`}</h3>
-                <a className="button" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
+                <a className="button" rel="nofollow" data-method="delete" name="Sign Out" href="/users/sign_out">Sign Out</a>
               </div>
             </div>
 
