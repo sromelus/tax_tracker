@@ -1,40 +1,39 @@
 require 'faker'
 
 user = User.create!(
-  email: "ab@gmail.com",
+  email: "jamesd@gmail.com",
   password: "password",
-  first_name: "Nado",
-  last_name: "Donal",
-  zip_code: "02124"
+  first_name: "James",
+  last_name: "Donovan"
 )
 
 user2 = User.create!(
-  email: "abc@gmail.com",
+  email: "karam@gmail.com",
   password: "password",
   first_name: "Karam",
   last_name: "Holden"
 )
 
-4.times do
+30.times do
   Trip.create!(
-        miles: Faker::Number.between(1, 20),
-        gross_income: Faker::Number.between(1, 20),
-        maintenance: Faker::Number.between(40, 100),
-        gas: Faker::Number.between(40, 100),
-        insurance: Faker::Number.between(40, 100),
-        food: Faker::Number.between(40, 100),
+        miles: Faker::Number.between(100, 200),
+        gross_income: Faker::Number.between(95, 320),
+        maintenance: Faker::Number.between(0, 110),
+        gas: Faker::Number.between(10, 15),
+        insurance: Faker::Number.between(2, 5),
+        food: Faker::Number.between(8, 15),
         user_id: user.id
       )
   Trip.create!(
-        miles: Faker::Number.between(1, 20),
-        gross_income: Faker::Number.between(1, 20),
-        maintenance: Faker::Number.between(40, 100),
-        gas: Faker::Number.between(40, 100),
+        miles: Faker::Number.between(100, 200),
+        gross_income: Faker::Number.between(95, 320),
+        maintenance: Faker::Number.between(0, 110),
+        gas: Faker::Number.between(10, 15),
         user_id: user2.id
       )
   Trip.create!(
-        miles: Faker::Number.between(1, 20),
-        gross_income: Faker::Number.between(1, 20),
+        miles: Faker::Number.between(100, 200),
+        gross_income: Faker::Number.between(95, 320),
         user_id: user2.id
       )
 end
