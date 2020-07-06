@@ -54,6 +54,43 @@ nav .img {
   padding-bottom: 5px;
 }
 
+.demo {
+  position: absolute;
+  width: 200px;
+  top: 10%;
+  left: 84.3%;
+}
+
+.demo-btn {
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  text-align: center;
+  background: #226287;
+  margin: 0;
+  padding: 5px;
+  transition: border-radius 1s;
+  cursor: pointer;
+}
+
+.demo-user {
+  height: 0px;
+  background: #1b1a19;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3), 0 14px 11px rgba(0, 0, 0, 0.3);
+  transition: height 1s;
+  margin-top: -5px;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.demo:hover > .demo-user {
+  height: 80px;
+}
+
+.demo:hover > .demo-btn {
+  border-radius: 10px 10px 0px 0px;
+}
+
 .button-home-page {
   background-color: #226287;
   padding: 5px 20px;
@@ -134,7 +171,7 @@ main p a {
   background-color: #4cb920;
   border-radius: 0px 0px 10px 10px;
   animation-name: msg;
-  animation-duration: 5s;
+  animation-duration: 4s;
 }
 
 @keyframes msg {
@@ -144,25 +181,6 @@ main p a {
     visibility: visible;
   }
 }
-
-
-/* div {
-  width: 100px;
-  height: 100px;
-  background: blue;
-  visibility: hidden;
-  position: relative;
-  animation: mymove 5s;
-}
-
-@keyframes mymove {
-  to {
-  	visibility: visible;
-    background: red;
-   }
-} */
-
-
 
 .footer {
   height: 50px;
@@ -224,7 +242,7 @@ footer a {
     margin: 10px 0;
   }
 
-  .flash-message {
+  .flash-message, .demo {
     display: none;
   }
 
