@@ -27,6 +27,7 @@ a.signout {
 
 .login-user img {
   width: 36.5%;
+  cursor: pointer;
 }
 
 .add-trip-anchor {
@@ -41,6 +42,24 @@ a.signout {
   font-size: 16px;
   outline-style: none;
   color: #fff;
+}
+
+.fade-in {
+  position: relative;
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .card {

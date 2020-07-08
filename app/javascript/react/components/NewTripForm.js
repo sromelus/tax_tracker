@@ -7,11 +7,6 @@ class NewTripForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        firstName: '',
-        lastName: ''
-      },
-      imageUrl: '',
       trip: {
         miles: '',
         gross_income: '',
@@ -23,34 +18,6 @@ class NewTripForm extends React.Component {
       message: '',
       errors: []
     }
-  }
-
-
-  componentDidMount(){
-    const id = this.props.params.id;
-
-    fetch(`/api/v1/trips`)
-    .then(response => {
-      if(response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        ...this.state,
-        user: {
-          firstName: body.current_user.first_name,
-          lastName: body.current_user.last_name
-        },
-        imageUrl: body.image
-      })
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
 
@@ -114,59 +81,47 @@ class NewTripForm extends React.Component {
   render(){
 
     return (
-      <div className="hero">
-
-        <div className="container-details-form">
-          <ProfileInfo
-            imageUrl={this.state.imageUrl}
-            firstName={this.state.user.firstName}
-            lastName={this.state.user.lastName}
-          />
-        </div>
-        <div className="container-aside-one">
-          <div className="container-trips">
-            <div className="trips-details-header">
-              <p id="trips_title">New Trip Data</p>
+      <div className="container-aside-one fade-in">
+        <div className="container-trips">
+          <div className="trips-details-header">
+            <p id="trips_title">New Trip Data</p>
+          </div>
+          <div className="trips-details-content">
+            <div style={{color: "red"}}>
+             {this.state.errors.map((error) => {
+               return(
+                 <li>{error.replace("is not", "must be")}</li>
+               )
+             })}
             </div>
-            <div className="trips-details-content">
-              <div style={{color: "red"}}>
-               {this.state.errors.map((error) => {
-                 return(
-                   <li>{error.replace("is not", "must be")}</li>
-                 )
-               })}
-              </div>
-              <div className="trips-form-card">
-                <form onSubmit={this.handleSubmit}>
-                  <div className="label-input">
-                    <div className="labels">
-                      <label className="label-form" htmlFor="miles">Miles:</label>
-                      <label className="label-form" htmlFor="grossincome">Gross Income:</label>
-                      <label className="label-form" htmlFor="maintenance">Maintenance:</label>
-                      <label className="label-form" htmlFor="gas">Gas:</label>
-                      <label className="label-form" htmlFor="food">Food:</label>
-                      <label className="label-form" htmlFor="insurance" title="Daily average insurance cost. For expample if your premium is $500 for 6 month. You need to divide $500 by the number of days in a 6 months period.&#013;Exp. $500 / (6 months x 30 days ) = $2.77 ≈ $3.00">Insurance: (&#8505;) </label>
-                    </div>
-                    <div className="">
-                      <input className="input-form" type="text" maxLength="7" id="miles" name="miles" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.miles}/>
-                      <input className="input-form" type="text" maxLength="7" id="gross_income" name="gross_income" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.gross_income}/>
-                      <input className="input-form" type="text" maxLength="7" id="maintenance" name="maintenance" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.maintenance}/>
-                      <input className="input-form" type="text" maxLength="7" id="gas" name="gas" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.gas}/>
-                      <input className="input-form" type="text" maxLength="7" id="food" name="food" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.food}/>
-                      <input className="input-form" type="text" maxLength="7" id="insurance" name="insurance" placeholder="Daily average cost, Default value: 0" onChange={this.handleChange} value={this.state.trip.insurance}/>
-                    </div>
+            <div className="trips-form-card">
+              <form onSubmit={this.handleSubmit}>
+                <div className="label-input">
+                  <div className="labels">
+                    <label className="label-form" htmlFor="miles">Miles:</label>
+                    <label className="label-form" htmlFor="grossincome">Gross Income:</label>
+                    <label className="label-form" htmlFor="maintenance">Maintenance:</label>
+                    <label className="label-form" htmlFor="gas">Gas:</label>
+                    <label className="label-form" htmlFor="food">Food:</label>
+                    <label className="label-form" htmlFor="insurance" title="Daily average insurance cost. For expample if your premium is $500 for 6 month. You need to divide $500 by the number of days in a 6 months period.&#013;Exp. $500 / (6 months x 30 days ) = $2.77 ≈ $3.00">Insurance: (&#8505;) </label>
                   </div>
-                  <div className="action-buttons">
-                    <input className="button" type="submit" value="Submit" />
-                    <Link className="button button-cancel" to={`/`}>Cancel</Link>
+                  <div className="">
+                    <input className="input-form" type="text" maxLength="7" id="miles" name="miles" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.miles}/>
+                    <input className="input-form" type="text" maxLength="7" id="gross_income" name="gross_income" placeholder="Must be a number" onChange={this.handleChange} value={this.state.trip.gross_income}/>
+                    <input className="input-form" type="text" maxLength="7" id="maintenance" name="maintenance" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.maintenance}/>
+                    <input className="input-form" type="text" maxLength="7" id="gas" name="gas" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.gas}/>
+                    <input className="input-form" type="text" maxLength="7" id="food" name="food" placeholder="Default value: 0" onChange={this.handleChange} value={this.state.trip.food}/>
+                    <input className="input-form" type="text" maxLength="7" id="insurance" name="insurance" placeholder="Daily average cost, Default value: 0" onChange={this.handleChange} value={this.state.trip.insurance}/>
                   </div>
-                </form>
-              </div>
+                </div>
+                <div className="action-buttons">
+                  <input className="button" type="submit" value="Submit" />
+                  <Link className="button button-cancel" to={`/`}>Cancel</Link>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <Footer />
-
       </div>
     )
   }

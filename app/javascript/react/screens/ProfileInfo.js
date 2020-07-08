@@ -9,6 +9,9 @@ class ProfileInfo extends Component {
       image: '',
       imageUploadSetting: false,
       show: "none",
+      firstName: '',
+      lastName: '',
+      imageUrl: '',
       message: '',
       errors: ''
     }
@@ -71,6 +74,31 @@ class ProfileInfo extends Component {
   }
 
 
+  componentDidMount(){
+
+    fetch("/api/v1/trips")
+    .then(response => {
+      if(response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        ...this.state,
+        firstName: body.current_user.first_name,
+        lastName: body.current_user.last_name,
+        imageUrl: body.image
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+
   render(){
 
     return (
@@ -81,9 +109,9 @@ class ProfileInfo extends Component {
               <img src="https://s3.amazonaws.com/tax-tracker-development/Logo.png" title="To home page" alt=""/>
             </Link>
             <div className="profile-info">
-              <img className="prof-picture" src={ `${this.props.imageUrl}` || "https://via.placeholder.com/150"} onClick={this.showImageUpload}/>
+              <img className="prof-picture" src={ `${this.state.imageUrl}` || "https://via.placeholder.com/150"} onClick={this.showImageUpload}/>
               <div className="profile-name" id="profile-name">
-                <h3>{`${this.props.firstName} ${this.props.lastName}`}</h3>
+                <h3>{`${this.state.firstName} ${this.state.lastName}`}</h3>
                 <a className="button" rel="nofollow" data-method="delete" name="Sign Out" href="/users/sign_out">Sign Out</a>
               </div>
             </div>

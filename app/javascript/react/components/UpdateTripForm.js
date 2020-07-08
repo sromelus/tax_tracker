@@ -7,11 +7,6 @@ export default class UpdateTripForm extends Component {
   constructor(){
     super()
     this.state = {
-      user: {
-        firstName: '',
-        lastName: ''
-      },
-      imageUrl: '',
       trip: {
         miles: 'Loading...',
         gross_income: 'Loading...',
@@ -42,11 +37,6 @@ export default class UpdateTripForm extends Component {
     .then(body => {
       this.setState({
         ...this.state,
-        user: {
-          firstName: body.current_user.first_name,
-          lastName: body.current_user.last_name
-        },
-        imageUrl: body.image,
         trip: body.trip
       })
     })
@@ -118,61 +108,49 @@ export default class UpdateTripForm extends Component {
   render(){
 
     return (
-      <div className="hero">
-
-        <div className="container-details-form">
-          <ProfileInfo
-            imageUrl={this.state.imageUrl}
-            firstName={this.state.user.firstName}
-            lastName={this.state.user.lastName}
-          />
-        </div>
-        <div className="container-aside-one">
-          <div className="container-trips">
-            <div className="trips-details-header">
-              <p id="trips_title">Update Trip Data</p>
+      <div className="container-aside-one fade-in">
+        <div className="container-trips">
+          <div className="trips-details-header">
+            <p id="trips_title">Update Trip Data</p>
+          </div>
+          <div className="trips-details-content">
+            <div style={{color: "red"}}>
+             {this.state.errors.map((error) => {
+               return(
+                 <li>{error.replace("is not", "must be")}</li>
+               )
+             })}
             </div>
-            <div className="trips-details-content">
-              <div style={{color: "red"}}>
-               {this.state.errors.map((error) => {
-                 return(
-                   <li>{error.replace("is not", "must be")}</li>
-                 )
-               })}
-              </div>
-              <div className="trips-form-card">
-                <form onSubmit={this.handleSubmit}>
-                  <div className="label-input">
-                    <div className="labels">
-                      <label className="label-form" htmlFor="miles">Miles:</label>
-                      <label className="label-form" htmlFor="gross_income">Gross Income:</label>
-                      <label className="label-form" htmlFor="maintenance">Maintenance:</label>
-                      <label className="label-form" htmlFor="gas">Gas:</label>
-                      <label className="label-form" htmlFor="food">Food:</label>
-                      <label className="label-form" htmlFor="insurance">Insurance:</label>
-                    </div>
-                    <div className="">
-                      <input className="input-form" type="text" maxLength="5" id="miles" name="miles" onChange={this.handleChange} value={this.state.trip.miles}/>
-                      <input className="input-form" type="text" maxLength="5" id="gross_income" name="gross_income" onChange={this.handleChange} value={this.state.trip.gross_income}/>
-                      <input className="input-form" type="text" maxLength="5" id="maintenance" name="maintenance" onChange={this.handleChange} value={this.state.trip.maintenance}/>
-                      <input className="input-form" type="text" maxLength="5" id="gas" name="gas" onChange={this.handleChange}
-                      value={this.state.trip.gas}/>
-                      <input className="input-form" type="text" maxLength="5" id="food" name="food" onChange={this.handleChange}
-                      value={this.state.trip.food}/>
-                      <input className="input-form" type="text" maxLength="5" id="insurance" name="insurance" onChange={this.handleChange} value={this.state.trip.insurance}/>
-                    </div>
+            <div className="trips-form-card">
+              <form onSubmit={this.handleSubmit}>
+                <div className="label-input">
+                  <div className="labels">
+                    <label className="label-form" htmlFor="miles">Miles:</label>
+                    <label className="label-form" htmlFor="gross_income">Gross Income:</label>
+                    <label className="label-form" htmlFor="maintenance">Maintenance:</label>
+                    <label className="label-form" htmlFor="gas">Gas:</label>
+                    <label className="label-form" htmlFor="food">Food:</label>
+                    <label className="label-form" htmlFor="insurance">Insurance:</label>
                   </div>
-                  <div className="action-buttons">
-                    <input className="button" type="submit" value="Submit" />
-                    <Link className="button button-cancel" to={`/`}>Cancel</Link>
+                  <div className="">
+                    <input className="input-form" type="text" maxLength="5" id="miles" name="miles" onChange={this.handleChange} value={this.state.trip.miles}/>
+                    <input className="input-form" type="text" maxLength="5" id="gross_income" name="gross_income" onChange={this.handleChange} value={this.state.trip.gross_income}/>
+                    <input className="input-form" type="text" maxLength="5" id="maintenance" name="maintenance" onChange={this.handleChange} value={this.state.trip.maintenance}/>
+                    <input className="input-form" type="text" maxLength="5" id="gas" name="gas" onChange={this.handleChange}
+                    value={this.state.trip.gas}/>
+                    <input className="input-form" type="text" maxLength="5" id="food" name="food" onChange={this.handleChange}
+                    value={this.state.trip.food}/>
+                    <input className="input-form" type="text" maxLength="5" id="insurance" name="insurance" onChange={this.handleChange} value={this.state.trip.insurance}/>
                   </div>
-                </form>
-              </div>
+                </div>
+                <div className="action-buttons">
+                  <input className="button" type="submit" value="Submit" />
+                  <Link className="button button-cancel" to={`/`}>Cancel</Link>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <Footer />
-
       </div>
     );
   }

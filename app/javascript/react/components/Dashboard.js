@@ -11,11 +11,6 @@ export default class Dashboard extends Component {
  constructor(props){
    super(props);
    this.state = {
-     user: {
-       firstName: "",
-       lastName: ""
-     },
-     imageUrl: '',
      trips: [],
      converTrips: [],
      tripsList: [],
@@ -42,11 +37,6 @@ export default class Dashboard extends Component {
      const trips = this.createTwoDimensional(body.trips, 12);
      this.setState({
        ...this.state,
-       user: {
-         firstName: body.current_user.first_name,
-         lastName: body.current_user.last_name
-       },
-       imageUrl: body.image,
        trips: body.trips,
        converTrips: trips,
        mounted: true
@@ -70,7 +60,8 @@ handleShowTripList = (e, array) => {
       tripsList =  array.map((trip) => {
       const expenses = trip.maintenance+trip.gas+trip.insurance+trip.food;
       const netIncome = trip.gross_income - expenses;
-      let taxOwed = (netIncome - (trip.miles * mileageRate)) * 0.10;
+      //let taxOwed = (netIncome - (trip.miles * mileageRate)) * 0.10; //taxes based on mileage for single trip
+      let taxOwed = netIncome * 0.10; //taxes based on expenses for single trip
       if (taxOwed < 0) taxOwed = 0.00;
 
       return (
@@ -195,7 +186,8 @@ calculateTaxes = (taxableIncome) => {
    const expenses = maintenance + gas + insurance + food;
    let netIncome = grossIncome - expenses;
 
-   taxableIncome = netIncome - mileageDeduction;
+   // taxableIncome = netIncome - mileageDeduction; //taxes based on mileage for all trip
+   taxableIncome = netIncome; //taxes based on expenses for all trip
 
    const taxOwed = this.calculateTaxes(taxableIncome);
 
@@ -209,66 +201,54 @@ calculateTaxes = (taxableIncome) => {
    }
 
     return (
-      <div className="hero">
-        <div className="container-login-user">
-          <ProfileInfo
-            imageUrl={this.state.imageUrl}
-            firstName={this.state.user.firstName}
-            lastName={this.state.user.lastName}
-          />
-        </div>
-
-        <div className="container-aside">
-          <div className="container-stats">
-            <div className="card">
-              <div className="card-text">
-                <p>Miles: </p>
-                <p>Gross Income: </p>
-                <p>Est. Net Income: </p>
-              </div>
-              <div className="card-numbers">
-                <p id="trips-miles">{miles}</p>
-                <p id="trips-gross-income">${grossIncome.toFixed(2)}</p>
-                <p id="trips-net-income" className={classColor}>${netIncome}</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-text">
-                <p>Total Expenses: </p>
-              </div>
-              <div className="card-numbers">
-                <p id="trips-expenses">${expenses.toFixed(2)}</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-text">
-                <p>Est. Taxes Owed: </p>
-              </div>
-              <div className="card-numbers">
-                <p id="trips-tax-owed">${taxOwed.toFixed(2)}</p>
-              </div>
-            </div>
+      <div className="container-aside fade-in">
+        <div className="container-stats">
+        <div className="card">
+          <div className="card-text">
+            <p>Miles: </p>
+            <p>Gross Income: </p>
+            <p>Est. Net Income: </p>
           </div>
-          <div className="container-trips">
-            <div className="trips-details-header">
-              <p id="trips_title">Trips History</p>
-              <Link to={`trips/new`}>
-                <div className="card add-card">
-                  <p> + </p>
-                  <p className="add-trip-anchor">Add new trip</p>
-                </div>
-              </Link>
-            </div>
-            <div className="trips-card-content">
-            {this.displayTripCard(this.state.mounted, this.state.tripsList)}
-            </div>
-            <div className="trips-page-number">
-              {this.state.pageNumbers}
-            </div>
+          <div className="card-numbers">
+            <p id="trips-miles">{miles}</p>
+            <p id="trips-gross-income">${grossIncome.toFixed(2)}</p>
+            <p id="trips-net-income" className={classColor}>${netIncome}</p>
           </div>
         </div>
-        <Footer />
-
+        <div className="card">
+          <div className="card-text">
+            <p>Total Expenses: </p>
+          </div>
+          <div className="card-numbers">
+            <p id="trips-expenses">${expenses.toFixed(2)}</p>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-text">
+            <p>Est. Taxes Owed: </p>
+          </div>
+          <div className="card-numbers">
+            <p id="trips-tax-owed">${taxOwed.toFixed(2)}</p>
+          </div>
+        </div>
+        </div>
+        <div className="container-trips">
+          <div className="trips-details-header">
+            <p id="trips_title">Trips History</p>
+            <Link to={`trips/new`}>
+              <div className="card add-card">
+                <p> + </p>
+                <p className="add-trip-anchor">Add new trip</p>
+              </div>
+            </Link>
+          </div>
+          <div className="trips-card-content">
+          {this.displayTripCard(this.state.mounted, this.state.tripsList)}
+          </div>
+          <div className="trips-page-number">
+            {this.state.pageNumbers}
+          </div>
+        </div>
       </div>
     )
   }

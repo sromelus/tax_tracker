@@ -4,8 +4,8 @@ import Dashboard from './Dashboard';
 import TripDetails from './TripDetails';
 import UpdateTripForm from './UpdateTripForm';
 import NewTripForm from './NewTripForm';
-import DeleteTrip from './DeleteTrip';
-
+import ProfileInfo from '../screens/ProfileInfo'
+import Footer from '../screens/Footer';
 
 import Months from './Months'
 
@@ -14,14 +14,19 @@ import Months from './Months'
 const AppRouter = () => {
   return (
     <div>
-      <Router history={browserHistory} >
-        <Route exact path="/" component={Dashboard}/>
-        <Route exact path="/trips" component={Dashboard}/>
-        <Route path="/trips/new" component={NewTripForm}/>
-        <Route path="/trips/:id" component={TripDetails}/>
-        <Route path="/trips/:id/update" component={UpdateTripForm}/>
-        {/*<Route path="/trips/:id/delete" component={DeleteTrip}/>*/}
-      </Router>
+        <div className="hero">
+          <div className="container-login-user">
+            <ProfileInfo />
+          </div>
+          <Router history={browserHistory}>
+            <Route exact path="/" component={Dashboard}/>
+            <Route exact path="/trips" component={Dashboard}/>
+            <Route path="/trips/new" component={NewTripForm}/>
+            <Route path="/trips/:id" component={TripDetails}/>
+            <Route path="/trips/:id/update" component={UpdateTripForm}/>
+          </Router>
+          <Footer />
+        </div>
     </div>
   );
 }
