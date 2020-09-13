@@ -3,7 +3,7 @@
 Tax Helper is platform to help rideshare drivers with their taxes. The app track taxes by applying Irs's standard mileage deduction
 each mile the user drive. The app will provide the user a comprehensive list of a their trips by day, month and year.
 
-You can see a demo version running at http://taxtrackr.herokuapp.com
+You can see a demo version running at http://taxtraker.herokuapp.com
 
 ####  Ruby version 2.4.5
 
