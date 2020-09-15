@@ -22,9 +22,9 @@
          <div class="form">
            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => 'form') do |f| %>
              <%= f.label "email", :class => 'label' %>
-             <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'input' %>
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "jam@gmail.com", :class => 'input' %>
              <%= f.label "password", :class => 'label' %>
-             <%= f.password_field :password, autocomplete: "new-password", :class => 'input' %>
+             <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", :class => 'input' %>
              <% if devise_mapping.rememberable? %>
                  <%= f.check_box :remember_me, :class => 'check-box' %>
                  <%= f.label :remember_me, :class => 'check-box-label' %><br><br>
