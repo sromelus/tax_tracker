@@ -1,7 +1,6 @@
 # README [![Codeship Status for sromelus/tax_tracker](https://app.codeship.com/projects/42548430-519e-0137-a957-1698be22a756/status?branch=master)](https://app.codeship.com/projects/340131)
 
-Tax Helper is platform to help rideshare drivers with their taxes. The app track taxes by applying Irs's standard mileage deduction
-each mile the user drive. The app will provide the user a comprehensive list of a their trips by day, month and year.
+Taxtraker is a platform to help rideshare drivers track their taxes. The app tracks taxes by applying Irs's standard mileage deduction for each mile the user drive.
 
 You can see a demo version running at http://taxtraker.herokuapp.com
 
